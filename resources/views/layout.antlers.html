@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ if meta_title }}{{ meta_title }}{{ elseif title }}{{ title }}{{ else }}{{ site:name }}{{ /if }} — {{ pengaturan:nama_organisasi }}</title>
+    <meta name="description" content="{{ meta_description ?? excerpt ?? pengaturan:deskripsi }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ if meta_title }}{{ meta_title }}{{ else }}{{ title ?? site:name }}{{ /if }}">
+    <meta property="og:description" content="{{ meta_description ?? excerpt ?? pengaturan:deskripsi }}">
+    {{ if cover }}
+        {{ cover }}<meta property="og:image" content="{{ glide:url width="1200" height="630" fit="crop" absolute="true" }}">{{ /cover }}
+    {{ /if }}
+
+    {{ if pengaturan:favicon }}
+        {{ pengaturan:favicon }}<link rel="icon" href="{{ url }}">{{ /pengaturan:favicon }}
+    {{ /if }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+    {{ vite src="resources/js/site.js|resources/css/site.css" }}
+</head>
+<body class="min-h-dvh flex flex-col">
+    {{ partial:header }}
+
+    <main id="konten" class="flex-1">
+        {{ template_content }}
+    </main>
+
+    {{ partial:footer }}
+</body>
+</html>

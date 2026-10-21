@@ -1,0 +1,41 @@
+<section class="wrap max-w-3xl pt-16 pb-12 sm:pt-24">
+    <p class="text-xs uppercase tracking-[0.08em] text-muted">Kontak</p>
+    <h1 class="mt-4 text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
+    {{ if intro }}<p class="mt-5 text-lg leading-relaxed text-ink-soft">{{ intro }}</p>{{ /if }}
+</section>
+
+<section class="wrap max-w-3xl pb-20" id="kontak">
+    <div class="grid gap-4 sm:grid-cols-2">
+        {{ if pengaturan:email }}
+            <a href="mailto:{{ pengaturan:email }}" class="card block p-5">
+                <p class="text-xs uppercase tracking-[0.08em] text-muted">Email</p>
+                <p class="mt-2 break-all font-medium">{{ pengaturan:email }}</p>
+            </a>
+        {{ /if }}
+
+        {{ if pengaturan:whatsapp }}
+            <a href="https://wa.me/{{ pengaturan:whatsapp }}" rel="noopener" class="card block p-5">
+                <p class="text-xs uppercase tracking-[0.08em] text-muted">WhatsApp</p>
+                <p class="mt-2 font-medium">+{{ pengaturan:whatsapp }}</p>
+            </a>
+        {{ /if }}
+
+        {{ if pengaturan:instagram }}
+            <a href="https://instagram.com/{{ pengaturan:instagram }}" rel="noopener" class="card block p-5">
+                <p class="text-xs uppercase tracking-[0.08em] text-muted">Instagram</p>
+                <p class="mt-2 font-medium">@{{ pengaturan:instagram }}</p>
+            </a>
+        {{ /if }}
+
+        {{ if pengaturan:alamat }}
+            <div class="card p-5">
+                <p class="text-xs uppercase tracking-[0.08em] text-muted">Alamat</p>
+                <p class="mt-2 leading-relaxed text-ink-soft">{{ pengaturan:alamat }}</p>
+            </div>
+        {{ /if }}
+    </div>
+
+    {{ if content }}
+        <div class="prose-article mt-12">{{ content }}</div>
+    {{ /if }}
+</section>

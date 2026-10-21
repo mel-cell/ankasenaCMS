@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="aspect-[4/5] overflow-hidden bg-paper-2">
+        {{ if foto }}
+            <img src="{{ glide:foto width="600" height="750" fit="crop" }}"
+                 alt="Foto {{ nama }}"
+                 loading="lazy"
+                 class="h-full w-full object-cover">
+        {{ /if }}
+    </div>
+    <div class="p-4">
+        <p class="text-sm font-semibold leading-tight">{{ nama }}</p>
+        <p class="mt-1 text-xs text-muted">
+            {{ jabatan }}{{ if divisi }} · {{ divisi }}{{ /if }}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{{ if intro }}
+<section class="wrap pt-16 pb-10 sm:pt-24">
+    <p class="text-xs uppercase tracking-[0.08em] text-muted">Kabinet</p>
+    <h1 class="mt-4 max-w-2xl text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
+    <p class="mt-5 max-w-xl leading-relaxed text-ink-soft">{{ intro }}</p>
+</section>
+{{ /if }}
+
+<section class="wrap pb-20">
+    {{ collection:kabinet }}
+        {{ if first }}
+            <div class="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+        {{ /if }}
+
+        {{ partial:kartu-kabinet }}
+
+        {{ if last }}
+            </div>
+        {{ /if }}
+    {{ /collection:kabinet }}
+
+    {{ collection:kabinet }}
+        {{ if no_results }}
+            <p class="rounded-xl border border-dashed border-line p-8 text-center text-sm text-muted">
+                Belum ada data pengurus. Tambahkan lewat Control Panel.
+            </p>
+        {{ /if }}
+    {{ /collection:kabinet }}
+</section>

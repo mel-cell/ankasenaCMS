@@ -1,0 +1,28 @@
+<article class="wrap max-w-3xl pt-16 pb-20 sm:pt-24">
+    <p class="text-xs uppercase tracking-[0.08em] text-muted">
+        {{ if kategori }}{{ kategori }}{{ title }}{{ /kategori }} · {{ /if }}{{ date format="j F Y" }}
+    </p>
+
+    <h1 class="mt-4 text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
+
+    {{ if excerpt }}
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">{{ excerpt }}</p>
+    {{ /if }}
+
+    {{ if cover }}
+        <figure class="mt-10 overflow-hidden rounded-xl border border-line">
+            <img src="{{ glide:cover width="1200" height="675" fit="crop" }}"
+                 alt="{{ cover:alt ?? title }}"
+                 class="h-full w-full object-cover">
+        </figure>
+    {{ /if }}
+
+    <div class="prose-article mt-10">
+        {{ konten }}
+    </div>
+
+    <footer class="mt-14 flex items-center justify-between border-t border-line pt-6 text-sm text-muted">
+        <p>{{ if penulis }}Ditulis oleh {{ penulis }}{{ else }}Redaksi {{ pengaturan:nama_organisasi }}{{ /if }}</p>
+        <a href="/blog" class="underline underline-offset-4 hover:text-ink">Semua artikel</a>
+    </footer>
+</article>

@@ -1,0 +1,115 @@
+title: Pengaturan
+fields:
+  -
+    handle: nama_organisasi
+    field:
+      type: text
+      display: 'Nama Organisasi'
+      default: 'OSIS MPK'
+  -
+    handle: sekolah
+    field:
+      type: text
+      display: Sekolah
+  -
+    handle: tagline
+    field:
+      type: text
+      display: Tagline
+      instructions: 'Satu kalimat pendek untuk hero beranda.'
+  -
+    handle: deskripsi
+    field:
+      type: textarea
+      display: Deskripsi
+      character_limit: 240
+  -
+    handle: logo
+    field:
+      type: assets
+      display: Logo
+      container: assets
+      max_files: 1
+      restrict: true
+      allowed: [svg, png, webp]
+  -
+    handle: favicon
+    field:
+      type: assets
+      display: Favicon
+      container: assets
+      max_files: 1
+      restrict: true
+      allowed: [png, ico, svg]
+  -
+    handle: periode
+    field:
+      type: text
+      display: Periode
+      default: '2025/2026'
+  -
+    handle: visi
+    field:
+      type: textarea
+      display: Visi
+  -
+    handle: misi
+    field:
+      type: grid
+      display: Misi
+      mode: table
+      fields:
+        -
+          handle: poin
+          field:
+            type: text
+            display: Poin
+  -
+    handle: alamat
+    field:
+      type: textarea
+      display: Alamat
+  -
+    handle: instagram
+    field:
+      type: text
+      display: Instagram
+  -
+    handle: tiktok
+    field:
+      type: text
+      display: TikTok
+  -
+    handle: youtube
+    field:
+      type: text
+      display: YouTube
+  -
+    handle: email
+    field:
+      type: text
+      display: Email
+      input: email
+  -
+    handle: whatsapp
+    field:
+      type: text
+      display: WhatsApp
+      instructions: 'Format internasional tanpa +, mis. 628123456789.'
+  -
+    handle: voting_open
+    field:
+      type: toggle
+      display: 'Voting Dibuka'
+      instructions: 'Aktifkan saat pemilihan berlangsung.'
+  -
+    handle: twibon_aktif
+    field:
+      type: toggle
+      display: 'Twibon Aktif'
+  -
+    handle: pesan_twibon
+    field:
+      type: textarea
+      display: 'Pesan Twibon'
+      instructions: 'Tampil di halaman twibon saat belum aktif.'

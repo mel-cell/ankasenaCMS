@@ -1,0 +1,36 @@
+{{ if intro }}
+<section class="wrap pt-16 pb-10 sm:pt-24">
+    <p class="text-xs uppercase tracking-[0.08em] text-muted">Blog</p>
+    <h1 class="mt-4 max-w-2xl text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
+    <p class="mt-5 max-w-xl leading-relaxed text-ink-soft">{{ intro }}</p>
+</section>
+{{ /if }}
+
+<section class="wrap pb-20">
+    {{ if get:kategori }}
+        <p class="mb-8 text-sm text-muted">
+            Filter: <span class="badge">{{ get:kategori }}</span>
+            <a href="/blog" class="ml-2 underline underline-offset-4 hover:text-ink">Hapus</a>
+        </p>
+    {{ /if }}
+
+    {{ collection:artikel :taxonomy:kategori="get:kategori" }}
+        {{ if first }}
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {{ /if }}
+
+        {{ partial:card-artikel }}
+
+        {{ if last }}
+            </div>
+        {{ /if }}
+    {{ /collection:artikel }}
+
+    {{ collection:artikel :taxonomy:kategori="get:kategori" }}
+        {{ if no_results }}
+            <p class="rounded-xl border border-dashed border-line p-8 text-center text-sm text-muted">
+                Belum ada artikel di sini.
+            </p>
+        {{ /if }}
+    {{ /collection:artikel }}
+</section>

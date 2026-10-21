@@ -1,0 +1,67 @@
+<section class="wrap pt-16 pb-20 sm:pt-24 sm:pb-28">
+    <p class="text-xs uppercase tracking-[0.08em] text-muted">{{ pengaturan:periode }} · {{ pengaturan:sekolah }}</p>
+
+    <h1 class="mt-5 max-w-3xl text-[clamp(2.5rem,6.5vw,4.5rem)] leading-[1.02] tracking-[-0.02em]">
+        {{ pengaturan:nama_organisasi }}
+    </h1>
+
+    {{ if pengaturan:tagline }}
+        <p class="mt-6 max-w-xl font-display text-[clamp(1.25rem,2.5vw,1.75rem)] leading-snug text-ink-soft">
+            {{ pengaturan:tagline }}
+        </p>
+    {{ /if }}
+
+    <p class="mt-6 max-w-lg leading-relaxed text-ink-soft">
+        {{ pengaturan:deskripsi }}
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+        <a href="/kabinet" class="btn btn-primary">Kenali kabinet</a>
+        <a href="/blog" class="btn btn-secondary">Baca blog</a>
+    </div>
+</section>
+
+{{ if pengaturan:visi }}
+<section class="border-y border-line bg-paper-2">
+    <div class="wrap grid gap-8 py-14 sm:grid-cols-[auto_1fr] sm:gap-16">
+        <p class="text-xs uppercase tracking-[0.08em] text-muted">Visi</p>
+        <p class="max-w-2xl font-display text-xl leading-relaxed sm:text-2xl">{{ pengaturan:visi }}</p>
+    </div>
+</section>
+{{ /if }}
+
+{{ collection:artikel unggulan:is="true" limit="3" }}
+    {{ if first }}
+    <section class="wrap py-16 sm:py-20">
+        <div class="flex items-end justify-between gap-6">
+            <h2 class="text-[clamp(1.75rem,3vw,2.25rem)]">Dari blog</h2>
+            <a href="/blog" class="text-sm text-amber underline underline-offset-4">Semua artikel</a>
+        </div>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {{ /if }}
+
+        {{ partial:card-artikel }}
+
+    {{ if last }}
+        </div>
+    </section>
+    {{ /if }}
+{{ /collection:artikel }}
+
+{{ collection:kabinet limit="4" }}
+    {{ if first }}
+    <section class="wrap pb-16 sm:pb-24">
+        <div class="flex items-end justify-between gap-6">
+            <h2 class="text-[clamp(1.75rem,3vw,2.25rem)]">Wajah kabinet</h2>
+            <a href="/kabinet" class="text-sm text-amber underline underline-offset-4">Lihat semua</a>
+        </div>
+        <div class="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+    {{ /if }}
+
+        {{ partial:kartu-kabinet }}
+
+    {{ if last }}
+        </div>
+    </section>
+    {{ /if }}
+{{ /collection:kabinet }}

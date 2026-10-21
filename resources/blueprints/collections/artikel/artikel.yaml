@@ -1,0 +1,69 @@
+title: Artikel
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Judul
+      validate: required
+  -
+    handle: excerpt
+    field:
+      type: textarea
+      display: Ringkasan
+      instructions: 'Tampil di kartu blog dan meta description. Maks 200 karakter.'
+      character_limit: 200
+      validate: required
+  -
+    handle: cover
+    field:
+      type: assets
+      display: 'Foto Cover'
+      container: assets
+      max_files: 1
+      mode: list
+      restrict: true
+      allowed: [jpg, jpeg, png, webp, avif]
+      validate: required
+  -
+    handle: kategori
+    field:
+      type: taxonomy
+      display: Kategori
+      taxonomy: kategori
+      max_items: 1
+  -
+    handle: konten
+    field:
+      type: markdown
+      display: Isi Artikel
+      container: assets
+      validate: required
+  -
+    handle: penulis
+    field:
+      type: text
+      display: Penulis
+  -
+    handle: date
+    field:
+      type: date
+      display: Tanggal
+      default: now
+  -
+    handle: unggulan
+    field:
+      type: toggle
+      display: 'Tampilkan di Beranda'
+  -
+    handle: meta_title
+    field:
+      type: text
+      display: 'SEO: Judul'
+      instructions: 'Kosongkan untuk pakai judul artikel.'
+  -
+    handle: meta_description
+    field:
+      type: textarea
+      display: 'SEO: Deskripsi'
+      character_limit: 160

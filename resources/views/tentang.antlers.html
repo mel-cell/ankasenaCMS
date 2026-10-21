@@ -1,0 +1,36 @@
+<section class="wrap max-w-3xl pt-16 pb-12 sm:pt-24">
+    <p class="text-xs uppercase tracking-[0.08em] text-muted">Tentang</p>
+    <h1 class="mt-4 text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
+    {{ if intro }}<p class="mt-5 text-lg leading-relaxed text-ink-soft">{{ intro }}</p>{{ /if }}
+</section>
+
+{{ if pengaturan:visi }}
+<section class="border-y border-line bg-paper-2">
+    <div class="wrap max-w-3xl py-14">
+        <p class="text-xs uppercase tracking-[0.08em] text-muted">Visi</p>
+        <p class="mt-4 font-display text-xl leading-relaxed sm:text-2xl">{{ pengaturan:visi }}</p>
+    </div>
+</section>
+{{ /if }}
+
+{{ if pengaturan:misi }}
+<section class="wrap max-w-3xl py-14">
+    <p class="text-xs uppercase tracking-[0.08em] text-muted">Misi</p>
+    <ol class="mt-6 space-y-4">
+        {{ pengaturan:misi }}
+            {{ if poin }}
+                <li class="flex gap-4 border-b border-line pb-4">
+                    <span class="font-display text-lg text-amber">{{ count }}</span>
+                    <span class="leading-relaxed text-ink-soft">{{ poin }}</span>
+                </li>
+            {{ /if }}
+        {{ /pengaturan:misi }}
+    </ol>
+</section>
+{{ /if }}
+
+{{ if content }}
+<section class="wrap max-w-3xl pb-20">
+    <div class="prose-article">{{ content }}</div>
+</section>
+{{ /if }}
