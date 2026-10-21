@@ -11,12 +11,12 @@
         </a>
 
         <nav aria-label="Navigasi utama" class="hidden items-center gap-7 text-sm font-medium sm:flex">
-            {{ nav:pages }}
+            {{ collection:pages }}
                 <a href="{{ url }}"
-                   class="{{ if is_current }}text-ink underline decoration-amber decoration-2 underline-offset-4{{ else }}text-ink-soft hover:text-ink{{ /if }}">
+                   class="{{ if url == current_url }}text-ink underline decoration-amber decoration-2 underline-offset-4{{ else }}text-ink-soft hover:text-ink{{ /if }}">
                     {{ title }}
                 </a>
-            {{ /nav:pages }}
+            {{ /collection:pages }}
         </nav>
 
         <a href="/#kontak" class="btn btn-secondary hidden text-sm lg:inline-flex">Hubungi</a>
@@ -32,9 +32,9 @@
 
     <nav id="nav-mobile" hidden aria-label="Navigasi seluler" class="wrap border-t border-line py-3 sm:hidden">
         <ul class="flex flex-col gap-1 text-base">
-            {{ nav:pages }}
+            {{ collection:pages }}
                 <li><a href="{{ url }}" class="block rounded-md px-2 py-2 hover:bg-paper-2">{{ title }}</a></li>
-            {{ /nav:pages }}
+            {{ /collection:pages }}
         </ul>
     </nav>
 </header>

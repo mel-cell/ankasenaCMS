@@ -9,7 +9,8 @@ Situs profil **OSIS MPK** + CMS + voting + twibon generator.
 | PHP | 8.4 (Debian trixie, `/usr/bin/php8.4`) |
 | Framework | Laravel 13.38 |
 | CMS | Statamic 6 (`statamic/cms`) |
-| DB | PostgreSQL `ankasena` @ 127.0.0.1:5432 |
+| DB | PostgreSQL `ankasena` @ 127.0.0.1:5432 (container `postgres_db`) |
+| Cache/Session/Queue | Redis @ 127.0.0.1:6379 (container `redis_docker`) |
 | Asset | Vite + Tailwind |
 | Image | Canvas API di browser (twibon), GD (Statamic) |
 
@@ -21,7 +22,7 @@ php artisan migrate
 composer install
 npm install
 npm run dev              # vite
-php artisan serve        # http://localhost:8000
+php artisan serve --host=0.0.0.0 --port=7943
 php please ...           # CLI Statamic (mis. `php please make:user`)
 ```
 

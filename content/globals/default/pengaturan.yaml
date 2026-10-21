@@ -1,0 +1,19 @@
+nama_organisasi: 'OSIS MPK Ankasena'
+sekolah: 'SMK Negeri 6 Malang'
+tagline: 'Suara siswa, arah sekolah.'
+deskripsi: 'Wadah aspirasi, kreativitas, dan kegiatan siswa. Kami merancang program yang dekat dengan keseharian murid.'
+periode: 2025/2026
+visi: 'Menjadi organisasi siswa yang terbuka, bergerak, dan berdampak nyata bagi seluruh warga sekolah.'
+misi:
+  -
+    poin: 'Membuka ruang aspirasi siswa yang mudah diakses.'
+  -
+    poin: 'Menjalankan program yang relevan dan berkelanjutan.'
+  -
+    poin: 'Menjaga transparansi anggaran dan keputusan.'
+alamat: 'Malang, Jawa Timur'
+instagram: osisankasena
+email: osis@ankasena.local
+voting_open: false
+twibon_aktif: false
+pesan_twibon: 'Twibon segera dibuka.'
