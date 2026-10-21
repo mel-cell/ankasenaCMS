@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource-variable/plus-jakarta-sans/index.css";
 @source "../views";
 @source "../../content";
 
@@ -13,9 +15,9 @@
   --color-amber-soft: #f6e7cf;
   --color-danger: #b4423a;
 
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --radius-sm: 6px;
   --radius: 12px;
