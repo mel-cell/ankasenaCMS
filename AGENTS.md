@@ -118,3 +118,5 @@ Bendahara II, Koordinator Divisi, Anggota.
 - Env Pro: `STATAMIC_PRO` (bukan `STATAMIC_PRO_ENABLED`); ganti env = restart server.
 - Fieldtype term: `type: terms` + `taxonomies: [handle]`; file term di `content/taxonomies/<tax>/<slug>.yaml` (tanpa subdir `terms/`); nilai di entry = slug kecil.
 - Antlers: `@{{` = escape, tag tidak diparse — pakai `&#64;{{ ... }}`.
+- **File tree (`content/trees/collections/pages.yaml`) wajib pakai entry ID (uuid), bukan slug.** Slug diabaikan diam-diam (`validateTree` buang lalu tambel ulang di ekor) → uri `/` nyasar ke halaman lain & halaman 404 walau `statamic:stache:refresh` diulang.
+- Bersih-bersih cache: `php artisan cache:clear` **dan** `php artisan statamic:stache:clear` (stache tersimpan di Redis; `optimize:clear` tidak menyentuhnya).

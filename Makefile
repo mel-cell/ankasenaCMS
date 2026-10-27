@@ -32,4 +32,5 @@ status:
 
 clean:
 	$(PHP) artisan optimize:clear
-	$(PHP) please stache:clear
+	$(PHP) artisan cache:clear
+	$(PHP) artisan statamic:stache:clear
