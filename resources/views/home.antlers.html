@@ -1,12 +1,5 @@
-<body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="m" viewBox="0 0 20 20"><path d="M10 0v20M0 10h20M2.5 2.5l15 15M17.5 2.5l-15 15"/></symbol></svg>
-
 <header class="hero w">
-  <nav>
-    <a class="brand f" href="#"><svg width="20" height="20" fill="none" stroke="#151515" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><use href="#m"/></svg>Ankasena</a>
-    <div class="menu"><a href="/tentang">Tentang</a><a href="/kabinet">Struktur</a><a href="/blog">Berita</a><a href="#saran">Saran</a></div>
-    <a class="pill" href="#kontak">Hubungi kami</a>
-  </nav>
+  {{ partial:navigasi }}
   <h1>{{ pengaturan:tagline }}</h1>
   <svg class="mark" aria-hidden="true"><use href="#m"/></svg>
 </header>
@@ -18,7 +11,7 @@
     <div class="btns"><a class="btn go" href="#kontak">Gabung sekarang</a><a class="btn alt" href="/kabinet">Lihat program</a></div>
   </div>
   <div class="photo" role="img" aria-label="Siswa berdiskusi dalam forum organisasi">
-    <a class="badge" href="/tentang" aria-label="Gulir ke bawah"><svg class="r" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="c" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text font-size="8.5" letter-spacing="2.2" fill="#151515" font-family="Inter,sans-serif"><textPath href="#c">OSIS · MPK · ANKASENA · 2026 ·</textPath></text></svg><span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v10M3 8l4 4 4-4"/></svg></span></a>
+    <a class="badge" href="/tentang" aria-label="Kenali Ankasena"><svg class="r" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="c" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1 -76 0"/></defs><text font-size="8.5" letter-spacing="2.2" style="fill:var(--bg)" font-family="Plus Jakarta Sans,sans-serif"><textPath href="#c">OSIS · MPK · ANKASENA · 2026 ·</textPath></text></svg><span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v10M3 8l4 4 4-4"/></svg></span></a>
   </div>
 </section>
 
@@ -28,8 +21,8 @@
     <a class="btn" href="/tentang">Kenali Ankasena</a>
   </div>
   <div class="orgs">
-    <div class="org"><div class="logo">OSIS</div><span><b>OSIS</b>Organisasi Siswa Intra Sekolah</span></div>
-    <div class="org"><div class="logo">MPK</div><span><b>MPK</b>Majelis Perwakilan Kelas</span></div>
+    <div class="org"><div class="logo">OSIS</div><span><b>OSIS</b>{{ pengaturan:deskripsi_osis ?? 'Organisasi Siswa Intra Sekolah' }}</span></div>
+    <div class="org"><div class="logo">MPK</div><span><b>MPK</b>{{ pengaturan:deskripsi_mpk ?? 'Majelis Perwakilan Kelas' }}</span></div>
   </div>
 </section>
 
@@ -40,12 +33,12 @@
 </section>
 
 <section class="focus w">
-  <h2 class="big">{{ pengaturan:visi }}</h2>
-  <div class="rows">
-    {{ pengaturan:nilai }}
-    <div class="row"><h3>{{ judul }}</h3><p>{{ deskripsi }}</p></div>
-    {{ /pengaturan:nilai }}
-  </div>
+    <h2 class="big">{{ pengaturan:visi }}</h2>
+    <div class="rows">
+      {{ pengaturan:nilai }}
+      <div class="row"><h3>{{ judul }}</h3><p>{{ deskripsi }}</p></div>
+      {{ /pengaturan:nilai }}
+    </div>
 </section>
 
 <section class="news w" id="berita">
@@ -81,15 +74,3 @@
   <div class="btns"><a class="btn dk" href="mailto:{{ pengaturan:email }}">Daftar sekarang</a><a class="btn alt" href="/blog">Lihat kegiatan</a></div>
   <svg class="mark" aria-hidden="true"><use href="#m"/></svg>
 </section>
-
-<footer class="w">
-  <div class="cols">
-    <p>OSIS &amp; MPK sebagai wadah siswa untuk berkarya, berinovasi, dan memimpin.</p>
-    <div><b>Menu</b><a href="/tentang">Tentang</a><br><a href="/kabinet">Struktur</a><br><a href="/blog">Berita</a></div>
-    <div><b>Lembaga</b>OSIS<br>MPK<br>Sekbid &amp; divisi</div>
-    <div><b>Kontak</b>&#64;{{ pengaturan:instagram }}<br>{{ pengaturan:email }}</div>
-  </div>
-  <div class="word" aria-hidden="true">Ankasena</div>
-  <div class="copy"><span>© {{ current_date format="Y" }} Ankasena OSIS &amp; MPK</span><span>Dibuat oleh siswa, untuk siswa</span></div>
-</footer>
-

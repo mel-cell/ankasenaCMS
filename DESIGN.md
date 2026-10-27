@@ -1,7 +1,7 @@
 # DESIGN.md — Ankasena
 
 Design system. Token di sini adalah sumber kebenaran; implementasi di
-`resources/css/app.css`. Kalau butuh nilai baru, update file ini dulu.
+`resources/css/site.css` + `resources/css/landing.css`. Kalau butuh nilai baru, update file ini dulu.
 
 ## Arah
 
@@ -97,10 +97,25 @@ weight 600, hover bg `#1B2C3F`, fokus ring 2px `amber` offset 2px.
 
 **Portal card** — kartu OSIS/MPK: bg `paper`, border `line`, radius 12px, center; logo 80px bulat (fallback monogram `font-display` di lingkaran `amber-soft`), nama h3 `font-display`, deskripsi `small`, link teks `amber`.
 
-## Token v2 — landing (beranda)
-Palet dari `templatelandingpage.html`. Hanya untuk layout `landing` (`resources/views/layouts/landing.antlers.html` + `resources/css/landing.css`); halaman dalam masih token v1 di atas.
-- aksen (lime) `#d6eb12`; aksen-2 `#c3d811` (derive `color-mix(in srgb, var(--lime) 88%, #101010)`)
-- ink `#151515`; bg `#fbfbfb`; card `#f3f3f3`; mut `#8a8a8a`; soft `#555`; line `#e2e2e2`
-- Font display & body: Plus Jakarta Sans Variable (self-host, `@fontsource-variable/plus-jakarta-sans`). Inter tidak dipakai.
-- Warna aksen/ink/bg bisa diubah dari CP (Globals → Pengaturan: `warna_aksen`, `warna_ink`, `warna_bg`) → di-inject inline di `<html>`, menimpa default CSS. Catatan: warna kustom mem-pin tampilan terang di landing.
-- Mode gelap (tanpa kustom): `prefers-color-scheme` mengganti bg/fg/card/mut/soft/line saja; lime & ink tetap.
+## Token v3 — situs gelap (SEMUA halaman, aktif)
+
+Palet OSIS-MPK (#003049/#D62828/#F77F00/#FCBF49), dasar gelap, aturan 60-30-10:
+60% latar navy `#003049`, 30% surface (derive `color-mix` dari bg: card ≈ 86% bg + putih, panel ≈ 72% bg + hitam, line ≈ 68% bg + putih), 10% aksen emas `#FCBF49` (+ oranye `#F77F00` hover, merah `#D62828` aksen kuat/error, dipakai hemat).
+
+| Token CSS | Default | Sumber CP (Globals → Pengaturan) |
+|---|---|---|
+| `--bg` | `#003049` | `warna_bg` |
+| `--fg` | `#F5EFE0` (teks terang) | `warna_ink` |
+| `--lime` | `#FCBF49` (aksen utama) | `warna_aksen` |
+| `--lime2` | `#F77F00` | `warna_aksen_2` |
+| `--red` | `#D62828` | `warna_aksen_3` |
+| `--panel`/`--card`/`--line`/`--mut`/`--soft` | derive dari `--bg`/`--fg` | otomatis |
+
+- Token di-inject inline di `<html>` oleh kedua layout (`layout.antlers.html` + `layouts/landing.antlers.html`) → `landing.css` dan `site.css` (Tailwind `@theme` mereferensikan var yang sama) selalu sinkron, tanpa duplikasi.
+- Teks di atas aksen emas = warna `--bg` (navy), bukan putih.
+- Font display & body: Plus Jakarta Sans Variable saja. Fraunces pensiun dari display.
+- `prefers-color-scheme` override dihapus — situs memang gelap by design.
+- Header (`.top` + `partial:navigasi`) dan footer dipakai lintas layout — satu sumber.
+- Foto: Unsplash (lisensi bebas), disimpan di disk `assets` (`public/assets/img/`); hero via `foto_hero`, cover artikel via field `cover`.
+
+Token v1 (di atas) dan v2 (landing lime terang) sudah TIDAK dipakai — histori saja.

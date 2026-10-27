@@ -46,8 +46,11 @@ nilai:
     judul: Kolaborasi
     deskripsi: 'Bekerja lintas bidang untuk hasil yang lebih besar.'
 deskripsi_singkat: 'Satu tahun penuh program, kolaborasi, dan karya yang digerakkan langsung oleh siswa.'
-warna_aksen: '#d6eb12'
-warna_ink: '#151515'
-warna_bg: '#fbfbfb'
+foto_hero: img/hero-landing.jpg
+warna_aksen: '#FCBF49'
+warna_aksen_2: '#F77F00'
+warna_aksen_3: '#D62828'
+warna_ink: '#F5EFE0'
+warna_bg: '#003049'
 cta_judul: 'Siap jadi bagian dari Ankasena?'
 cta_deskripsi: 'Kami terbuka untuk kolaborasi acara, sponsor kegiatan, dan ide program bersama komunitas maupun dunia usaha.'

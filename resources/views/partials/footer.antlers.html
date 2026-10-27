@@ -1,34 +1,10 @@
-<footer class="mt-24 border-t border-line">
-    <div class="wrap grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-3">
-        <div>
-            <p class="font-display text-lg font-semibold">{{ pengaturan:nama_organisasi }}</p>
-            {{ if pengaturan:sekolah }}<p class="mt-1 text-sm text-muted">{{ pengaturan:sekolah }}</p>{{ /if }}
-            {{ if pengaturan:alamat }}<p class="mt-3 max-w-xs text-sm leading-relaxed text-muted">{{ pengaturan:alamat }}</p>{{ /if }}
-        </div>
-
-        <div>
-            <p class="text-xs uppercase tracking-[0.08em] text-muted">Halaman</p>
-            <ul class="mt-3 space-y-2 text-sm">
-                {{ collection:pages }}
-                    <li><a href="{{ url }}" class="text-ink-soft hover:text-ink">{{ title }}</a></li>
-                {{ /collection:pages }}
-            </ul>
-        </div>
-
-        <div>
-            <p class="text-xs uppercase tracking-[0.08em] text-muted">Terhubung</p>
-            <ul class="mt-3 space-y-2 text-sm">
-                {{ if pengaturan:instagram }}<li><a href="https://instagram.com/{{ pengaturan:instagram }}" rel="noopener" class="text-ink-soft hover:text-ink">Instagram</a></li>{{ /if }}
-                {{ if pengaturan:tiktok }}<li><a href="https://tiktok.com/@{{ pengaturan:tiktok }}" rel="noopener" class="text-ink-soft hover:text-ink">TikTok</a></li>{{ /if }}
-                {{ if pengaturan:youtube }}<li><a href="{{ pengaturan:youtube }}" rel="noopener" class="text-ink-soft hover:text-ink">YouTube</a></li>{{ /if }}
-                {{ if pengaturan:email }}<li><a href="mailto:{{ pengaturan:email }}" class="text-ink-soft hover:text-ink">{{ pengaturan:email }}</a></li>{{ /if }}
-                {{ if pengaturan:whatsapp }}<li><a href="https://wa.me/{{ pengaturan:whatsapp }}" rel="noopener" class="text-ink-soft hover:text-ink">WhatsApp</a></li>{{ /if }}
-            </ul>
-        </div>
+<footer class="w">
+    <div class="cols">
+        <p>OSIS &amp; MPK sebagai wadah siswa untuk berkarya, berinovasi, dan memimpin.</p>
+        <div><b>Menu</b><a href="/tentang">Tentang</a><br><a href="/kabinet">Struktur</a><br><a href="/blog">Berita</a></div>
+        <div><b>Lembaga</b>OSIS<br>MPK<br>Sekbid &amp; divisi</div>
+        <div><b>Kontak</b>{{ if pengaturan:instagram }}&#64;{{ pengaturan:instagram }}<br>{{ /if }}{{ if pengaturan:email }}{{ pengaturan:email }}{{ /if }}</div>
     </div>
-
-    <div class="wrap flex flex-col gap-2 border-t border-line py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>&copy; {{ now format="Y" }} {{ pengaturan:nama_organisasi }}{{ if pengaturan:periode }} · {{ pengaturan:periode }}{{ /if }}</p>
-        <p>Dibangun dengan Statamic.</p>
-    </div>
+    <div class="word" aria-hidden="true">Ankasena</div>
+    <div class="copy"><span>© {{ current_date format="Y" }} Ankasena OSIS &amp; MPK</span><span>Dibuat oleh siswa, untuk siswa</span></div>
 </footer>

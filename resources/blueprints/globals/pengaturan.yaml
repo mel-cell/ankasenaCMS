@@ -201,20 +201,32 @@ fields:
     handle: warna_aksen
     field:
       type: text
-      display: 'Warna aksen (hex)'
-      instructions: 'Mulai dengan #. Contoh: #d6eb12'
+      display: 'Warna aksen utama (hex)'
+      instructions: 'Mulai dengan #. Emas untuk tombol/chip/CTA. Contoh: #FCBF49'
+  -
+    handle: warna_aksen_2
+    field:
+      type: text
+      display: 'Warna aksen 2 (hex)'
+      instructions: 'Oranye, untuk hover/dekorasi. Contoh: #F77F00'
+  -
+    handle: warna_aksen_3
+    field:
+      type: text
+      display: 'Warna aksen 3 (hex)'
+      instructions: 'Merah, aksen kuat/error — pakai hemat. Contoh: #D62828'
   -
     handle: warna_ink
     field:
       type: text
-      display: 'Warna gelap (hex)'
-      instructions: 'Contoh: #151515'
+      display: 'Warna teks utama (hex)'
+      instructions: 'Warna terang untuk teks di atas latar gelap. Contoh: #F5EFE0'
   -
     handle: warna_bg
     field:
       type: text
       display: 'Warna latar (hex)'
-      instructions: 'Contoh: #fbfbfb'
+      instructions: 'Warna gelap dominan (60%). Contoh: #003049'
   -
     handle: cta_judul
     field:

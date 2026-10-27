@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" style="--lime: {{ pengaturan:warna_aksen ?? '#d6eb12' }}; --lime2: color-mix(in srgb, var(--lime) 88%, #101010); --ink: {{ pengaturan:warna_ink ?? '#151515' }}; --bg: {{ pengaturan:warna_bg ?? '#fbfbfb' }};{{ if pengaturan:foto_hero }} --photo: url('{{ pengaturan:foto_hero }}{{ url }}{{ /pengaturan:foto_hero }}');{{ /if }}">
+<html lang="id" style="--lime: {{ pengaturan:warna_aksen ?? '#FCBF49' }}; --lime2: {{ pengaturan:warna_aksen_2 ?? '#F77F00' }}; --red: {{ pengaturan:warna_aksen_3 ?? '#D62828' }}; --fg: {{ pengaturan:warna_ink ?? '#F5EFE0' }}; --bg: {{ pengaturan:warna_bg ?? '#003049' }};{{ if pengaturan:foto_hero }} --photo: url('{{ pengaturan:foto_hero }}{{ url }}{{ /pengaturan:foto_hero }}');{{ /if }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,9 +8,10 @@
     {{ if pengaturan:favicon }}
         {{ pengaturan:favicon }}<link rel="icon" href="{{ url }}">{{ /pengaturan:favicon }}
     {{ /if }}
-    {{ vite src="resources/css/landing.css" }}
+    {{ vite src="resources/css/site.css|resources/css/landing.css" }}
 </head>
 <body>
     {{ template_content }}
+    {{ partial:footer }}
 </body>
 </html>
