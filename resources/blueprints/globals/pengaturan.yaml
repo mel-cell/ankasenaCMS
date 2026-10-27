@@ -152,12 +152,69 @@ fields:
           field:
             type: text
             display: Angka
-            width: 33
+            width: 20
         -
           handle: label
           field:
             type: text
             display: Label
+            width: 35
+        -
+          handle: deskripsi
+          field:
+            type: text
+            display: Deskripsi singkat
+  -
+    handle: nilai
+    field:
+      type: grid
+      display: 'Nilai fokus organisasi'
+      mode: table
+      add_row: 'Tambah nilai'
+      fields:
+        -
+          handle: judul
+          field:
+            type: text
+            display: Judul
+        -
+          handle: deskripsi
+          field:
+            type: text
+            display: Deskripsi
+  -
+    handle: deskripsi_singkat
+    field:
+      type: textarea
+      display: 'Deskripsi singkat (panel gelap)'
+      character_limit: 160
+  -
+    handle: foto_hero
+    field:
+      type: assets
+      display: 'Foto panel gelap'
+      container: assets
+      max_files: 1
+      restrict: true
+      allowed: [jpg, jpeg, png, webp, avif]
+  -
+    handle: warna_aksen
+    field:
+      type: text
+      display: 'Warna aksen (hex)'
+      instructions: 'Mulai dengan #. Contoh: #d6eb12'
+  -
+    handle: warna_ink
+    field:
+      type: text
+      display: 'Warna gelap (hex)'
+      instructions: 'Contoh: #151515'
+  -
+    handle: warna_bg
+    field:
+      type: text
+      display: 'Warna latar (hex)'
+      instructions: 'Contoh: #fbfbfb'
   -
     handle: cta_judul
     field:

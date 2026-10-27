@@ -28,9 +28,9 @@ fields:
   -
     handle: kategori
     field:
-      type: taxonomy
+      type: terms
       display: Kategori
-      taxonomy: kategori
+      taxonomies: [kategori]
       max_items: 1
   -
     handle: konten

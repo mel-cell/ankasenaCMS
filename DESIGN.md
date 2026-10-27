@@ -96,3 +96,11 @@ weight 600, hover bg `#1B2C3F`, fokus ring 2px `amber` offset 2px.
 **Stat band** — section `border-y border-line bg-paper-2`, grid 2/4 kolom, angka `font-display` semibold besar warna `amber`, label `small` `text-ink-soft`, center. Sumber data: grid `statistik` di globals.
 
 **Portal card** — kartu OSIS/MPK: bg `paper`, border `line`, radius 12px, center; logo 80px bulat (fallback monogram `font-display` di lingkaran `amber-soft`), nama h3 `font-display`, deskripsi `small`, link teks `amber`.
+
+## Token v2 — landing (beranda)
+Palet dari `templatelandingpage.html`. Hanya untuk layout `landing` (`resources/views/layouts/landing.antlers.html` + `resources/css/landing.css`); halaman dalam masih token v1 di atas.
+- aksen (lime) `#d6eb12`; aksen-2 `#c3d811` (derive `color-mix(in srgb, var(--lime) 88%, #101010)`)
+- ink `#151515`; bg `#fbfbfb`; card `#f3f3f3`; mut `#8a8a8a`; soft `#555`; line `#e2e2e2`
+- Font display & body: Plus Jakarta Sans Variable (self-host, `@fontsource-variable/plus-jakarta-sans`). Inter tidak dipakai.
+- Warna aksen/ink/bg bisa diubah dari CP (Globals → Pengaturan: `warna_aksen`, `warna_ink`, `warna_bg`) → di-inject inline di `<html>`, menimpa default CSS. Catatan: warna kustom mem-pin tampilan terang di landing.
+- Mode gelap (tanpa kustom): `prefers-color-scheme` mengganti bg/fg/card/mut/soft/line saja; lime & ink tetap.

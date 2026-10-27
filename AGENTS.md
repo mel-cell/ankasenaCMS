@@ -113,3 +113,8 @@ Bendahara II, Koordinator Divisi, Anggota.
 - Submission tersimpan otomatis di `storage/forms/<handle>/` (tidak ikut git).
 - Honeypot bawaan Statamic 6 dirender sebagai input `description` — jangan pakai handle itu di field form.
 - Tes form via curl wajib kirim header `Referer` (Statamic memakai `URL::previous()`), kalau tidak gagal diam-diam.
+
+## Gotcha Statamic 6
+- Env Pro: `STATAMIC_PRO` (bukan `STATAMIC_PRO_ENABLED`); ganti env = restart server.
+- Fieldtype term: `type: terms` + `taxonomies: [handle]`; file term di `content/taxonomies/<tax>/<slug>.yaml` (tanpa subdir `terms/`); nilai di entry = slug kecil.
+- Antlers: `@{{` = escape, tag tidak diparse — pakai `&#64;{{ ... }}`.

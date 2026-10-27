@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="id" style="--lime: {{ pengaturan:warna_aksen ?? '#d6eb12' }}; --lime2: color-mix(in srgb, var(--lime) 88%, #101010); --ink: {{ pengaturan:warna_ink ?? '#151515' }}; --bg: {{ pengaturan:warna_bg ?? '#fbfbfb' }};{{ if pengaturan:foto_hero }} --photo: url('{{ pengaturan:foto_hero }}{{ url }}{{ /pengaturan:foto_hero }}');{{ /if }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if meta_title }}{{ meta_title }}{{ elseif title }}{{ title }}{{ else }}{{ site:name }}{{ /if }} — {{ pengaturan:nama_organisasi }}</title>
+    <meta name="description" content="{{ meta_description ?? pengaturan:deskripsi }}">
+    {{ if pengaturan:favicon }}
+        {{ pengaturan:favicon }}<link rel="icon" href="{{ url }}">{{ /pengaturan:favicon }}
+    {{ /if }}
+    {{ vite src="resources/css/landing.css" }}
+</head>
+<body>
+    {{ template_content }}
+</body>
+</html>

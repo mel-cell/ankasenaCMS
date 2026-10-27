@@ -1,9 +1,9 @@
 nama_organisasi: 'OSIS MPK Ankasena'
 sekolah: 'SMK Negeri 6 Malang'
-tagline: 'Suara siswa, arah sekolah.'
-deskripsi: 'Wadah aspirasi, kreativitas, dan kegiatan siswa. Kami merancang program yang dekat dengan keseharian murid.'
+tagline: 'Dapatkan pengalaman organisasi yang nyata, penuh kreativitas & inovasi'
+deskripsi: 'Apa itu Ankasena? Wadah siswa untuk belajar memimpin lewat karya dan kolaborasi.'
 periode: 2025/2026
-visi: 'Menjadi organisasi siswa yang terbuka, bergerak, dan berdampak nyata bagi seluruh warga sekolah.'
+visi: 'Ruang bagi siswa untuk berkreasi, berinovasi, dan belajar memimpin dari pengalaman nyata.'
 misi:
   -
     poin: 'Membuka ruang aspirasi siswa yang mudah diakses.'
@@ -21,16 +21,33 @@ deskripsi_osis: 'Organ pelaksana program kerja siswa — dari bidang olahraga, s
 deskripsi_mpk: 'Dewan perwakilan kelas yang menampung aspirasi, mengawasi kinerja OSIS, dan menjaga transparansi.'
 statistik:
   -
+    angka: '2'
+    label: Lembaga
+    deskripsi: 'OSIS sebagai penggerak program, MPK sebagai penyalur aspirasi.'
+  -
     angka: '8'
-    label: 'Bidang OSIS'
+    label: 'Sekbid di OSIS'
+    deskripsi: 'Delapan seksi bidang yang menjalankan program sesuai keahliannya.'
   -
     angka: '4'
-    label: 'Bidang MPK'
+    label: 'Divisi di MPK'
+    deskripsi: 'Empat divisi yang mengawasi dan menampung suara perwakilan kelas.'
+nilai:
   -
-    angka: '32'
-    label: 'Pengurus aktif'
+    judul: Kreativitas
+    deskripsi: 'Seni, media, dan acara yang lahir dari ide siswa.'
   -
-    angka: '12'
-    label: 'Program kerja'
-cta_judul: 'Jadilah partner kerja kami'
+    judul: Inovasi
+    deskripsi: 'Program baru yang menjawab kebutuhan teman-teman di sekolah.'
+  -
+    judul: Kepemimpinan
+    deskripsi: 'Belajar mengatur tim, rapat, dan mengambil keputusan.'
+  -
+    judul: Kolaborasi
+    deskripsi: 'Bekerja lintas bidang untuk hasil yang lebih besar.'
+deskripsi_singkat: 'Satu tahun penuh program, kolaborasi, dan karya yang digerakkan langsung oleh siswa.'
+warna_aksen: '#d6eb12'
+warna_ink: '#151515'
+warna_bg: '#fbfbfb'
+cta_judul: 'Siap jadi bagian dari Ankasena?'
 cta_deskripsi: 'Kami terbuka untuk kolaborasi acara, sponsor kegiatan, dan ide program bersama komunitas maupun dunia usaha.'
