@@ -1,5 +1,5 @@
-<section class="wrap max-w-3xl pt-16 pb-20 sm:pt-24">
-    <h1 class="text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
-    {{ if intro }}<p class="mt-5 text-lg leading-relaxed text-ink-soft">{{ intro }}</p>{{ /if }}
-    {{ if content }}<div class="prose-article mt-10">{{ content }}</div>{{ /if }}
+<section class="w pagehead pagefoot">
+    <h1>{{ title }}</h1>
+    {{ if intro }}<p class="lead">{{ intro }}</p>{{ /if }}
+    {{ if content }}<div class="prose-article" style="margin-top:clamp(32px,5vw,56px)">{{ content }}</div>{{ /if }}
 </section>

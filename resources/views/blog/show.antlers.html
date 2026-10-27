@@ -1,28 +1,20 @@
-<article class="wrap max-w-3xl pt-16 pb-20 sm:pt-24">
-    <p class="text-xs uppercase tracking-[0.08em] text-muted">
-        {{ if kategori }}{{ kategori }}{{ title }}{{ /kategori }} · {{ /if }}{{ date format="j/n/Y" }}
-    </p>
-
-    <h1 class="mt-4 text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
-
-    {{ if excerpt }}
-        <p class="mt-5 text-lg leading-relaxed text-ink-soft">{{ excerpt }}</p>
-    {{ /if }}
+<article class="w">
+    <div class="pagehead">
+        <p class="kicker">{{ if kategori }}{{ kategori }}{{ title }}{{ /kategori }}{{ else }}Info{{ /if }} · {{ date format="j/n/Y" }}</p>
+        <h1>{{ title }}</h1>
+        {{ if excerpt }}<p class="lead">{{ excerpt }}</p>{{ /if }}
+    </div>
 
     {{ if cover }}
-        <figure class="mt-10 overflow-hidden rounded-xl border border-line">
-            <img src="{{ glide:cover width="1200" height="675" fit="crop" }}"
-                 alt="{{ cover:alt ?? title }}"
-                 class="h-full w-full object-cover">
-        </figure>
+        {{ cover }}<img src="{{ glide:url width="1400" fit="crop" }}" alt="{{ alt ?? title }}" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block">{{ /cover }}
     {{ /if }}
 
-    <div class="prose-article mt-10">
+    <div class="prose-article" style="margin:clamp(40px,6vw,72px) auto 0">
         {{ konten }}
     </div>
 
-    <footer class="mt-14 flex items-center justify-between border-t border-line pt-6 text-sm text-muted">
+    <footer style="margin:56px auto 0;padding:24px 0 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--mut)">
         <p>{{ if penulis }}Ditulis oleh {{ penulis }}{{ else }}Redaksi {{ pengaturan:nama_organisasi }}{{ /if }}</p>
-        <a href="/blog" class="underline underline-offset-4 hover:text-ink">Semua artikel</a>
+        <a href="/blog" style="text-decoration:underline;text-underline-offset:3px">Semua artikel</a>
     </footer>
 </article>

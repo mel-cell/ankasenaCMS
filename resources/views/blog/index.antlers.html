@@ -1,22 +1,20 @@
-{{ if intro }}
-<section class="wrap pt-16 pb-10 sm:pt-24">
-    <p class="text-xs uppercase tracking-[0.08em] text-muted">Blog</p>
-    <h1 class="mt-4 max-w-2xl text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
-    <p class="mt-5 max-w-xl leading-relaxed text-ink-soft">{{ intro }}</p>
+<section class="w pagehead">
+    <p class="kicker">Berita</p>
+    <h1>{{ title ?? 'Berita & kegiatan' }}</h1>
+    {{ if intro }}<p class="lead">{{ intro }}</p>{{ /if }}
 </section>
-{{ /if }}
 
-<section class="wrap pb-20">
+<section class="w pagefoot">
     {{ if get:kategori }}
-        <p class="mb-8 text-sm text-muted">
-            Filter: <span class="badge">{{ get:kategori }}</span>
-            <a href="/blog" class="ml-2 underline underline-offset-4 hover:text-ink">Hapus</a>
+        <p style="font-size:13px;color:var(--mut);margin-bottom:28px">Filter:
+            <i style="font-style:normal;background:var(--lime);color:var(--bg);padding:3px 10px;border-radius:99px;font-size:11px;font-weight:500">{{ get:kategori }}</i>
+            <a href="/blog" style="text-decoration:underline;text-underline-offset:3px">Hapus filter</a>
         </p>
     {{ /if }}
 
     {{ collection:artikel :taxonomy:kategori="get:kategori" }}
         {{ if first }}
-            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="grid3">
         {{ /if }}
 
         {{ partial:card-artikel }}
@@ -28,9 +26,7 @@
 
     {{ collection:artikel :taxonomy:kategori="get:kategori" }}
         {{ if no_results }}
-            <p class="rounded-xl border border-dashed border-line p-8 text-center text-sm text-muted">
-                Belum ada artikel di sini.
-            </p>
+            <p class="lead">Belum ada artikel di sini.</p>
         {{ /if }}
     {{ /collection:artikel }}
 </section>

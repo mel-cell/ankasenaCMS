@@ -1,10 +1,8 @@
-{{ if intro }}
-<section class="wrap pt-16 pb-10 sm:pt-24">
-    <p class="text-xs uppercase tracking-[0.08em] text-muted">Kabinet</p>
-    <h1 class="mt-4 max-w-2xl text-[clamp(2rem,4.5vw,3rem)] leading-[1.08]">{{ title }}</h1>
-    <p class="mt-5 max-w-xl leading-relaxed text-ink-soft">{{ intro }}</p>
+<section class="w pagehead">
+    <p class="kicker">Struktur</p>
+    <h1>{{ title }}</h1>
+    {{ if intro }}<p class="lead">{{ intro }}</p>{{ /if }}
 </section>
-{{ /if }}
 
 <section class="wrap pb-20">
     {{ collection:kabinet }}

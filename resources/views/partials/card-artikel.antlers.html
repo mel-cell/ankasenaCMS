@@ -1,18 +1,6 @@
-<a href="{{ url }}" class="card block">
-    <div class="aspect-[16/9] overflow-hidden bg-paper-2">
-        {{ if cover }}
-            <img src="{{ glide:cover width="800" height="450" fit="crop" }}"
-                 alt="{{ cover:alt ?? title }}"
-                 loading="lazy"
-                 class="h-full w-full object-cover">
-        {{ /if }}
-    </div>
-    <div class="p-5">
-        {{ if kategori }}
-            <span class="badge">{{ kategori }}{{ title }}{{ /kategori }}</span>
-        {{ /if }}
-        <h3 class="mt-3 text-lg leading-snug">{{ title }}</h3>
-        <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{{ excerpt }}</p>
-        <p class="mt-4 text-xs text-muted">{{ date format="j/n/Y" }}</p>
-    </div>
+<a href="{{ url }}" class="post">
+    <div class="im"{{ if cover }} style="--photo:url('{{ cover }}{{ url }}{{ /cover }}')"{{ /if }}>{{ if kategori }}<i>{{ kategori }}{{ title }}{{ /kategori }}</i>{{ /if }}</div>
+    <small>{{ date format="j/n/Y" }}</small>
+    <h3>{{ title }}</h3>
+    {{ if excerpt }}<p>{{ excerpt }}</p>{{ /if }}
 </a>
