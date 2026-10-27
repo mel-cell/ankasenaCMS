@@ -90,3 +90,9 @@ weight 600, hover bg `#1B2C3F`, fokus ring 2px `amber` offset 2px.
 - Foto selalu punya `alt` bermakna. Foto orang: focal point, aspect tetap.
 - Jangan pakai warna `amber` untuk teks paragraf panjang.
 - Bahasa UI Indonesia; angka & tanggal format `id-ID`.
+
+## Komponen tambahan (beranda)
+
+**Stat band** — section `border-y border-line bg-paper-2`, grid 2/4 kolom, angka `font-display` semibold besar warna `amber`, label `small` `text-ink-soft`, center. Sumber data: grid `statistik` di globals.
+
+**Portal card** — kartu OSIS/MPK: bg `paper`, border `line`, radius 12px, center; logo 80px bulat (fallback monogram `font-display` di lingkaran `amber-soft`), nama h3 `font-display`, deskripsi `small`, link teks `amber`.

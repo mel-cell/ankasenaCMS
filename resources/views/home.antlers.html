@@ -1,46 +1,92 @@
-<section class="wrap pt-16 pb-20 sm:pt-24 sm:pb-28">
-    <p class="text-xs uppercase tracking-[0.08em] text-muted">{{ pengaturan:periode }} · {{ pengaturan:sekolah }}</p>
-
-    <h1 class="mt-5 max-w-3xl text-[clamp(2.5rem,6.5vw,4.5rem)] leading-[1.02] tracking-[-0.02em]">
-        {{ pengaturan:nama_organisasi }}
-    </h1>
-
-    {{ if pengaturan:tagline }}
-        <p class="mt-6 max-w-xl font-display text-[clamp(1.25rem,2.5vw,1.75rem)] leading-snug text-ink-soft">
-            {{ pengaturan:tagline }}
+{{# Hero — tipografi center dengan aksen #}}
+<section class="relative overflow-hidden border-b border-line">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber to-transparent" aria-hidden="true"></div>
+    <svg class="pointer-events-none absolute left-1/2 top-6 -translate-x-1/2 text-amber-soft" width="440" height="440" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1.5 4"/>
+    </svg>
+    <div class="wrap relative flex flex-col items-center py-20 text-center sm:py-28">
+        <p class="rounded-full bg-amber-soft px-3 py-1 text-xs font-medium uppercase tracking-[0.08em] text-ink">
+            Periode {{ pengaturan:periode }} · {{ pengaturan:sekolah }}
         </p>
-    {{ /if }}
 
-    <p class="mt-6 max-w-lg leading-relaxed text-ink-soft">
-        {{ pengaturan:deskripsi }}
-    </p>
+        <h1 class="mt-7 max-w-4xl font-display text-[clamp(2.75rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.02em]">
+            {{ pengaturan:nama_organisasi }}
+        </h1>
 
-    <div class="mt-10 flex flex-wrap gap-3">
-        <a href="/kabinet" class="btn btn-primary">Kenali kabinet</a>
-        <a href="/blog" class="btn btn-secondary">Baca blog</a>
+        {{ if pengaturan:tagline }}
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl">{{ pengaturan:tagline }}</p>
+        {{ /if }}
+
+        <div class="mt-10 flex flex-wrap justify-center gap-3">
+            <a href="/tentang" class="btn btn-primary">Profil organisasi</a>
+            <a href="/blog" class="btn btn-secondary">Berita terbaru</a>
+        </div>
     </div>
 </section>
 
-{{ if pengaturan:visi }}
-<section class="border-y border-line bg-paper-2">
-    <div class="wrap grid gap-8 py-14 sm:grid-cols-[auto_1fr] sm:gap-16">
-        <p class="text-xs uppercase tracking-[0.08em] text-muted">Visi</p>
-        <p class="max-w-2xl font-display text-xl leading-relaxed sm:text-2xl">{{ pengaturan:visi }}</p>
+{{# Portal & profil — OSIS dan MPK #}}
+<section class="wrap py-16 sm:py-24">
+    <div class="mx-auto max-w-2xl text-center">
+        <p class="text-xs uppercase tracking-[0.08em] text-muted">Portal organisasi</p>
+        <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.25rem)]">Dua organ, satu arah</h2>
+        <p class="mt-4 leading-relaxed text-ink-soft">{{ pengaturan:deskripsi }}</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        <div class="rounded-xl border border-line bg-paper p-8 text-center transition hover:shadow-[0_2px_8px_rgb(14_27_42/.08)]">
+            {{ if pengaturan:logo_osis }}
+                {{ pengaturan:logo_osis }}
+                    <img src="{{ url }}" alt="Logo OSIS" class="mx-auto h-20 w-20 rounded-full object-cover">
+                {{ /pengaturan:logo_osis }}
+            {{ else }}
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-amber-soft font-display text-2xl font-semibold text-ink" aria-hidden="true">O</div>
+            {{ /if }}
+            <h3 class="mt-5 font-display text-xl font-semibold">OSIS</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink-soft">{{ pengaturan:deskripsi_osis ?? 'Organ pelaksana program kerja siswa.' }}</p>
+            <a href="/tentang" class="mt-5 inline-block text-sm text-amber underline underline-offset-4">Kenali OSIS</a>
+        </div>
+
+        <div class="rounded-xl border border-line bg-paper p-8 text-center transition hover:shadow-[0_2px_8px_rgb(14_27_42/.08)]">
+            {{ if pengaturan:logo_mpk }}
+                {{ pengaturan:logo_mpk }}
+                    <img src="{{ url }}" alt="Logo MPK" class="mx-auto h-20 w-20 rounded-full object-cover">
+                {{ /pengaturan:logo_mpk }}
+            {{ else }}
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-amber-soft font-display text-2xl font-semibold text-ink" aria-hidden="true">M</div>
+            {{ /if }}
+            <h3 class="mt-5 font-display text-xl font-semibold">MPK</h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink-soft">{{ pengaturan:deskripsi_mpk ?? 'Dewan perwakilan yang mengawal aspirasi siswa.' }}</p>
+            <a href="/tentang" class="mt-5 inline-block text-sm text-amber underline underline-offset-4">Kenali MPK</a>
+        </div>
     </div>
 </section>
+
+{{# Statistik #}}
+{{ if pengaturan:statistik }}
+    <section class="border-y border-line bg-paper-2" aria-label="Statistik organisasi">
+        <div class="wrap grid grid-cols-2 gap-8 py-12 text-center sm:py-16 lg:grid-cols-4">
+            {{ pengaturan:statistik }}
+                <div>
+                    <p class="font-display text-4xl font-semibold text-amber sm:text-5xl">{{ angka }}</p>
+                    <p class="mt-2 text-sm text-ink-soft">{{ label }}</p>
+                </div>
+            {{ /pengaturan:statistik }}
+        </div>
+    </section>
 {{ /if }}
 
-{{ collection:artikel unggulan:is="true" limit="3" }}
+{{# Berita terbaru #}}
+{{ collection:artikel sort="date:desc" limit="3" }}
     {{ if first }}
-    <section class="wrap py-16 sm:py-20">
+    <section class="wrap py-16 sm:py-24">
         <div class="flex items-end justify-between gap-6">
-            <h2 class="text-[clamp(1.75rem,3vw,2.25rem)]">Dari blog</h2>
-            <a href="/blog" class="text-sm text-amber underline underline-offset-4">Semua artikel</a>
+            <h2 class="font-display text-[clamp(1.75rem,3vw,2.25rem)]">Berita terbaru</h2>
+            <a href="/blog" class="text-sm text-amber underline underline-offset-4">Semua berita</a>
         </div>
         <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {{ /if }}
 
-        {{ partial:card-artikel }}
+            {{ partial:card-artikel }}
 
     {{ if last }}
         </div>
@@ -48,20 +94,61 @@
     {{ /if }}
 {{ /collection:artikel }}
 
-{{ collection:kabinet limit="4" }}
-    {{ if first }}
-    <section class="wrap pb-16 sm:pb-24">
-        <div class="flex items-end justify-between gap-6">
-            <h2 class="text-[clamp(1.75rem,3vw,2.25rem)]">Wajah kabinet</h2>
-            <a href="/kabinet" class="text-sm text-amber underline underline-offset-4">Lihat semua</a>
-        </div>
-        <div class="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-    {{ /if }}
+{{# CTA partner #}}
+<section class="wrap py-16 sm:py-24">
+    <div class="rounded-[20px] bg-ink px-6 py-16 text-center sm:px-16 sm:py-20">
+        <p class="text-xs uppercase tracking-[0.08em] text-paper/60">{{ pengaturan:sekolah }}</p>
+        <h2 class="mx-auto mt-4 max-w-2xl font-display text-[clamp(1.75rem,3.5vw,2.5rem)] leading-tight text-paper">
+            {{ pengaturan:cta_judul ?? 'Jadilah partner kerja kami' }}
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl leading-relaxed text-paper/80">
+            {{ pengaturan:cta_deskripsi ?? 'Terbuka untuk kolaborasi acara, sponsor kegiatan, dan ide program.' }}
+        </p>
+        {{ if pengaturan:email }}
+            <a href="mailto:{{ pengaturan:email }}" class="mt-8 inline-flex rounded-xl bg-paper px-5 py-3 text-sm font-semibold text-ink hover:bg-amber-soft">
+                Email kami · {{ pengaturan:email }}
+            </a>
+        {{ /if }}
+    </div>
+</section>
 
-        {{ partial:kartu-kabinet }}
-
-    {{ if last }}
+{{# Kotak saran #}}
+<section class="wrap pb-20 sm:pb-28">
+    <div class="mx-auto max-w-2xl">
+        <div class="text-center">
+            <p class="text-xs uppercase tracking-[0.08em] text-muted">Aspirasi</p>
+            <h2 class="mt-3 font-display text-[clamp(1.75rem,3vw,2.25rem)]">Kotak saran</h2>
+            <p class="mt-4 leading-relaxed text-ink-soft">Punya masukan untuk OSIS MPK? Tulis di sini, kami baca semuanya.</p>
         </div>
-    </section>
-    {{ /if }}
-{{ /collection:kabinet }}
+
+        {{ form:kotak_saran }}
+            {{ if success }}
+                <p class="mt-8 rounded-xl border border-line bg-amber-soft px-5 py-4 text-sm font-medium text-ink" role="status">
+                    Terima kasih! Saranmu sudah kami terima.
+                </p>
+            {{ else }}
+                <div class="mt-8 flex flex-col gap-5">
+                    {{ if errors }}
+                        <div class="rounded-xl border border-danger/40 bg-danger/5 px-5 py-4 text-sm text-danger" role="alert">
+                            {{ errors }}
+                                <p>{{ message }}</p>
+                            {{ /errors }}
+                        </div>
+                    {{ /if }}
+
+                    <div>
+                        <label for="nama" class="text-sm font-medium text-ink-soft">Nama <span class="text-muted">(opsional)</span></label>
+                        <input type="text" id="nama" name="nama" value="{{ old:nama }}" class="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm">
+                    </div>
+                    <div>
+                        <label for="pesan" class="text-sm font-medium text-ink-soft">Pesan</label>
+                        <textarea id="pesan" name="pesan" rows="4" required class="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm">{{ old:pesan }}</textarea>
+                    </div>
+
+                    {{ honeypot }}
+                    <button type="submit" class="btn btn-primary self-start">Kirim saran</button>
+                </div>
+            {{ /if }}
+        {{ /form:kotak_saran }}
+    </div>
+</section>

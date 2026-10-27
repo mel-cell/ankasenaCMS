@@ -107,3 +107,9 @@ Bendahara II, Koordinator Divisi, Anggota.
 1. **Profil** — beranda, tentang, kabinet, blog, kontak. ← sekarang
 2. **Voting** — Google OAuth + allowlist email + 1 suara/orang + hasil.
 3. **Twibon** — template Canva + generator Canvas + download PNG.
+
+## Gotcha form
+- YAML form ada di `resources/forms/` (bukan `content/forms`) — lihat `config/statamic/forms.php`.
+- Submission tersimpan otomatis di `storage/forms/<handle>/` (tidak ikut git).
+- Honeypot bawaan Statamic 6 dirender sebagai input `description` — jangan pakai handle itu di field form.
+- Tes form via curl wajib kirim header `Referer` (Statamic memakai `URL::previous()`), kalau tidak gagal diam-diam.

@@ -28,3 +28,4 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 /storage/logs/serve.pid
+/storage/forms/

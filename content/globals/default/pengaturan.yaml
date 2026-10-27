@@ -17,3 +17,20 @@ email: osis@ankasena.local
 voting_open: false
 twibon_aktif: false
 pesan_twibon: 'Twibon segera dibuka.'
+deskripsi_osis: 'Organ pelaksana program kerja siswa — dari bidang olahraga, seni, hingga litbang yang bergerak untuk sekolah.'
+deskripsi_mpk: 'Dewan perwakilan kelas yang menampung aspirasi, mengawasi kinerja OSIS, dan menjaga transparansi.'
+statistik:
+  -
+    angka: '8'
+    label: 'Bidang OSIS'
+  -
+    angka: '4'
+    label: 'Bidang MPK'
+  -
+    angka: '32'
+    label: 'Pengurus aktif'
+  -
+    angka: '12'
+    label: 'Program kerja'
+cta_judul: 'Jadilah partner kerja kami'
+cta_deskripsi: 'Kami terbuka untuk kolaborasi acara, sponsor kegiatan, dan ide program bersama komunitas maupun dunia usaha.'

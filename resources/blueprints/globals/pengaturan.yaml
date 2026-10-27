@@ -113,3 +113,60 @@ fields:
       type: textarea
       display: 'Pesan Twibon'
       instructions: 'Tampil di halaman twibon saat belum aktif.'
+  -
+    handle: logo_osis
+    field:
+      type: assets
+      display: 'Logo OSIS'
+      container: assets
+      max_files: 1
+  -
+    handle: logo_mpk
+    field:
+      type: assets
+      display: 'Logo MPK'
+      container: assets
+      max_files: 1
+  -
+    handle: deskripsi_osis
+    field:
+      type: textarea
+      display: 'Deskripsi OSIS'
+      character_limit: 200
+  -
+    handle: deskripsi_mpk
+    field:
+      type: textarea
+      display: 'Deskripsi MPK'
+      character_limit: 200
+  -
+    handle: statistik
+    field:
+      type: grid
+      display: Statistik
+      mode: table
+      add_row: 'Tambah statistik'
+      fields:
+        -
+          handle: angka
+          field:
+            type: text
+            display: Angka
+            width: 33
+        -
+          handle: label
+          field:
+            type: text
+            display: Label
+  -
+    handle: cta_judul
+    field:
+      type: text
+      display: 'Judul CTA'
+      instructions: 'Bagian ajakan partnership di beranda.'
+  -
+    handle: cta_deskripsi
+    field:
+      type: textarea
+      display: 'Deskripsi CTA'
+      character_limit: 200

@@ -11,6 +11,7 @@ export default defineConfig({
         tailwindcss(),
     ],
     server: {
+        host: process.env.VITE_HOST || true,
         watch: {
             ignored: [
                 '**/storage/framework/views/**',
