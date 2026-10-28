@@ -186,13 +186,13 @@ fields:
     handle: deskripsi_singkat
     field:
       type: textarea
-      display: 'Deskripsi singkat (panel gelap)'
+      display: 'Deskripsi singkat (panel periode)'
       character_limit: 160
   -
     handle: foto_hero
     field:
       type: assets
-      display: 'Foto panel gelap'
+      display: 'Foto panel periode'
       container: assets
       max_files: 1
       restrict: true
@@ -225,8 +225,8 @@ fields:
     handle: warna_bg
     field:
       type: text
-      display: 'Warna latar (hex)'
-      instructions: 'Warna gelap dominan (60%). Contoh: #003049'
+      display: 'Warna navy brand (hex)'
+      instructions: 'Untuk hero, footer, tombol gelap, dan teks utama di halaman putih. Contoh: #003049'
   -
     handle: cta_judul
     field:

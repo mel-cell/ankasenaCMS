@@ -1,27 +1,23 @@
 <section class="w pagehead">
-    <p class="kicker">Struktur</p>
+    <p class="kicker">Sekbid &amp; Divisi</p>
     <h1>{{ title }}</h1>
     {{ if intro }}<p class="lead">{{ intro }}</p>{{ /if }}
 </section>
 
-<section class="wrap pb-20">
-    {{ collection:kabinet }}
-        {{ if first }}
-            <div class="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-        {{ /if }}
-
-        {{ partial:kartu-kabinet }}
-
-        {{ if last }}
-            </div>
-        {{ /if }}
-    {{ /collection:kabinet }}
-
-    {{ collection:kabinet }}
+<section class="w pagefoot">
+    {{ collection:kabinet group_by="divisi" }}
         {{ if no_results }}
-            <p class="rounded-xl border border-dashed border-line p-8 text-center text-sm text-muted">
-                Belum ada data pengurus. Tambahkan lewat Control Panel.
-            </p>
+            <p class="lead">Belum ada data pengurus. Tambahkan lewat Control Panel.</p>
         {{ /if }}
+        {{ groups }}
+            <div class="grp">
+                <p class="kicker">{{ group ?? 'Tanpa divisi' }}</p>
+                <div class="grid3" style="margin-top:24px">
+                    {{ items }}
+                        {{ partial:kartu-kabinet }}
+                    {{ /items }}
+                </div>
+            </div>
+        {{ /groups }}
     {{ /collection:kabinet }}
 </section>

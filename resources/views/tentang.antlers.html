@@ -5,32 +5,21 @@
 </section>
 
 {{ if pengaturan:visi }}
-<section class="border-y border-line bg-paper-2">
-    <div class="wrap max-w-3xl py-14">
-        <p class="text-xs uppercase tracking-[0.08em] text-muted">Visi</p>
-        <p class="mt-4 font-display text-xl leading-relaxed sm:text-2xl">{{ pengaturan:visi }}</p>
-    </div>
+<section class="w" style="padding-top:clamp(8px,2vw,24px)">
+    <p class="kicker">Visi</p>
+    <p class="big" style="font-size:clamp(24px,3.4vw,34px);max-width:26ch;margin-top:16px">{{ pengaturan:visi }}</p>
 </section>
 {{ /if }}
 
 {{ if pengaturan:misi }}
-<section class="wrap max-w-3xl py-14">
-    <p class="text-xs uppercase tracking-[0.08em] text-muted">Misi</p>
-    <ol class="mt-6 space-y-4">
-        {{ pengaturan:misi }}
-            {{ if poin }}
-                <li class="flex gap-4 border-b border-line pb-4">
-                    <span class="font-display text-lg text-amber">{{ count }}</span>
-                    <span class="leading-relaxed text-ink-soft">{{ poin }}</span>
-                </li>
-            {{ /if }}
-        {{ /pengaturan:misi }}
+<section class="w" style="padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(24px,4vw,48px)">
+    <p class="kicker">Misi</p>
+    <ol class="misi">
+        {{ pengaturan:misi }}{{ if poin }}<li><b>{{ count }}</b><p>{{ poin }}</p></li>{{ /if }}{{ /pengaturan:misi }}
     </ol>
 </section>
 {{ /if }}
 
 {{ if content }}
-<section class="wrap max-w-3xl pb-20">
-    <div class="prose-article">{{ content }}</div>
-</section>
+<section class="w pagefoot"><div class="prose-article">{{ content }}</div></section>
 {{ /if }}

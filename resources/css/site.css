@@ -5,15 +5,15 @@
 @source "../../content";
 
 @theme {
-  /* Token v3 — warna nyambung ke var runtime dari Globals (lihat DESIGN.md) */
-  --color-ink: var(--fg, #F5EFE0);
-  --color-ink-soft: var(--soft, #C9D4DE);
-  --color-muted: var(--mut, #93A9BC);
-  --color-paper: var(--bg, #003049);
-  --color-paper-2: var(--card, #123a52);
-  --color-line: var(--line, #1e4a66);
+  /* Token v4 — body putih, navy #003049 (var --bg) untuk teks/aksen, emas 10% (lihat DESIGN.md) */
+  --color-ink: var(--bg, #003049);
+  --color-ink-soft: var(--soft, #33546B);
+  --color-muted: var(--mut, #5E7B93);
+  --color-paper: #FFFFFF;
+  --color-paper-2: var(--card, #F2F6F9);
+  --color-line: var(--line, #D9E3EA);
   --color-amber: var(--lime, #FCBF49);
-  --color-amber-soft: color-mix(in srgb, var(--lime, #FCBF49) 20%, var(--bg, #003049));
+  --color-amber-soft: color-mix(in srgb, var(--lime, #FCBF49) 18%, #fff);
   --color-danger: var(--red, #D62828);
 
   --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
@@ -109,14 +109,14 @@
   }
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+    box-shadow: 0 10px 30px rgb(0 48 73 / 0.10);
   }
 
   .badge {
     display: inline-block;
     border-radius: 999px;
     background-color: var(--color-amber-soft);
-    color: var(--color-amber);
+    color: var(--lime2, #F77F00);
     font-size: 0.75rem;
     line-height: 1.4;
     letter-spacing: 0.08em;
@@ -132,7 +132,7 @@
   .prose-article > * + * { margin-top: 1.25em; }
   .prose-article h2 { font-size: 1.6em; margin-top: 2em; color: var(--color-ink); }
   .prose-article h3 { font-size: 1.25em; margin-top: 1.6em; color: var(--color-ink); }
-  .prose-article a { color: var(--color-amber); text-underline-offset: 3px; text-decoration: underline; }
+  .prose-article a { color: var(--lime2, #F77F00); text-underline-offset: 3px; text-decoration: underline; }
   .prose-article ul { list-style: disc; padding-left: 1.4em; }
   .prose-article ol { list-style: decimal; padding-left: 1.4em; }
   .prose-article blockquote {
@@ -142,7 +142,7 @@
     font-style: italic;
   }
   .prose-article pre {
-    background-color: var(--panel, #06202f);
+    background-color: var(--bg, #062033);
     color: var(--fg, #F5EFE0);
     border-radius: var(--radius);
     padding: 1rem 1.25rem;

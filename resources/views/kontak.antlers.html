@@ -4,38 +4,23 @@
     {{ if intro }}<p class="lead">{{ intro }}</p>{{ /if }}
 </section>
 
-<section class="wrap max-w-3xl pb-20" id="kontak">
-    <div class="grid gap-4 sm:grid-cols-2">
+<section class="w pagefoot">
+    <div class="flatgrid">
         {{ if pengaturan:email }}
-            <a href="mailto:{{ pengaturan:email }}" class="card block p-5">
-                <p class="text-xs uppercase tracking-[0.08em] text-muted">Email</p>
-                <p class="mt-2 break-all font-medium">{{ pengaturan:email }}</p>
-            </a>
+            <div><p class="kicker">Email</p><a href="mailto:{{ pengaturan:email }}">{{ pengaturan:email }}</a></div>
         {{ /if }}
-
         {{ if pengaturan:whatsapp }}
-            <a href="https://wa.me/{{ pengaturan:whatsapp }}" rel="noopener" class="card block p-5">
-                <p class="text-xs uppercase tracking-[0.08em] text-muted">WhatsApp</p>
-                <p class="mt-2 font-medium">+{{ pengaturan:whatsapp }}</p>
-            </a>
+            <div><p class="kicker">WhatsApp</p><a href="https://wa.me/{{ pengaturan:whatsapp }}" rel="noopener">+{{ pengaturan:whatsapp }}</a></div>
         {{ /if }}
-
         {{ if pengaturan:instagram }}
-            <a href="https://instagram.com/{{ pengaturan:instagram }}" rel="noopener" class="card block p-5">
-                <p class="text-xs uppercase tracking-[0.08em] text-muted">Instagram</p>
-                <p class="mt-2 font-medium">@{{ pengaturan:instagram }}</p>
-            </a>
+            <div><p class="kicker">Instagram</p><a href="https://instagram.com/{{ pengaturan:instagram }}" rel="noopener">@{{ pengaturan:instagram }}</a></div>
         {{ /if }}
-
         {{ if pengaturan:alamat }}
-            <div class="card p-5">
-                <p class="text-xs uppercase tracking-[0.08em] text-muted">Alamat</p>
-                <p class="mt-2 leading-relaxed text-ink-soft">{{ pengaturan:alamat }}</p>
-            </div>
+            <div><p class="kicker">Alamat</p><p style="font-size:clamp(17px,2.4vw,22px);font-weight:500;line-height:1.5;margin-top:4px">{{ pengaturan:alamat }}</p></div>
         {{ /if }}
     </div>
 
     {{ if content }}
-        <div class="prose-article mt-12">{{ content }}</div>
+        <div class="prose-article" style="margin-top:clamp(48px,7vw,88px)">{{ content }}</div>
     {{ /if }}
 </section>

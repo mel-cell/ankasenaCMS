@@ -1,0 +1,21 @@
+# Preferensi default CP (berlaku semua user; bisa dioverride per-user di CP → Preferences).
+# Key warna = daftar lengkap di vendor Statamic src/CP/Color.php Color::defaults().
+theme:
+  colors:
+    primary: '#003049'
+    body-bg: '#F2F6F9'
+    body-border: '#DCE5EC'
+    content-bg: '#FFFFFF'
+    content-border: '#DCE5EC'
+    global-header-bg: '#003049'
+    ui-accent-bg: '#F77F00'
+    ui-accent-text: var(--theme-color-ui-accent-bg)
+    switch-bg: var(--theme-color-ui-accent-bg)
+    focus-outline: '#F77F00'
+    progress-bar: '#FCBF49'
+    dark-primary: '#F77F00'
+    dark-body-bg: '#06202F'
+    dark-body-border: '#041722'
+    dark-content-bg: '#0B2939'
+    dark-content-border: '#12374B'
+    dark-ui-accent-text: '#FCBF49'

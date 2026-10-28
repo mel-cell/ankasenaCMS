@@ -97,25 +97,33 @@ weight 600, hover bg `#1B2C3F`, fokus ring 2px `amber` offset 2px.
 
 **Portal card** — kartu OSIS/MPK: bg `paper`, border `line`, radius 12px, center; logo 80px bulat (fallback monogram `font-display` di lingkaran `amber-soft`), nama h3 `font-display`, deskripsi `small`, link teks `amber`.
 
-## Token v3 — situs gelap (SEMUA halaman, aktif)
+## Token v4 — hero navy + body putih (SEMUA halaman, aktif)
 
-Palet OSIS-MPK (#003049/#D62828/#F77F00/#FCBF49), dasar gelap, aturan 60-30-10:
-60% latar navy `#003049`, 30% surface (derive `color-mix` dari bg: card ≈ 86% bg + putih, panel ≈ 72% bg + hitam, line ≈ 68% bg + putih), 10% aksen emas `#FCBF49` (+ oranye `#F77F00` hover, merah `#D62828` aksen kuat/error, dipakai hemat).
+Palet OSIS-MPK (#003049/#D62828/#F77F00/#FCBF49), aturan 60-30-10 versi terang:
+60% **putih** (body & semua section konten), 30% **navy** `#003049` (hero, footer, tombol dk, teks utama), 10% **emas** `#FCBF49` (tombol go, chip kategori, badge, band CTA; hover `#F77F00`).
 
 | Token CSS | Default | Sumber CP (Globals → Pengaturan) |
 |---|---|---|
-| `--bg` | `#003049` | `warna_bg` |
-| `--fg` | `#F5EFE0` (teks terang) | `warna_ink` |
+| `--bg` | `#003049` (navy brand) | `warna_bg` |
+| `--fg` | `#F5EFE0` (teks terang di atas navy) | `warna_ink` |
 | `--lime` | `#FCBF49` (aksen utama) | `warna_aksen` |
 | `--lime2` | `#F77F00` | `warna_aksen_2` |
 | `--red` | `#D62828` | `warna_aksen_3` |
-| `--panel`/`--card`/`--line`/`--mut`/`--soft` | derive dari `--bg`/`--fg` | otomatis |
+| `--panel`/`--card`/`--line`/`--mut`/`--soft` | derive TINT PUTIH dari `--bg` (5–78% navy + putih) | otomatis |
 
-- Token di-inject inline di `<html>` oleh kedua layout (`layout.antlers.html` + `layouts/landing.antlers.html`) → `landing.css` dan `site.css` (Tailwind `@theme` mereferensikan var yang sama) selalu sinkron, tanpa duplikasi.
-- Teks di atas aksen emas = warna `--bg` (navy), bukan putih.
+- `--bg` = navy brand (hero, footer, tombol dk, teks di atas emas). Body halaman putih `#fff` (hardcoded di `landing.css`, ponytail: angkat ke var kalau perlu editable).
+- Footer me-override `--panel/--card/--line/--mut/--soft` ke derive GELAP lagi di scope sendiri.
+- Token di-inject inline di `<html>` oleh kedua layout (`layout.antlers.html` + `layouts/landing.antlers.html`) → `landing.css` dan `site.css` (Tailwind `@theme`: `--color-ink` = `var(--bg)` dst.) selalu sinkron.
+- Navbar dua-keadaan, hanya di beranda (`.top.float`): polos saat di atas; setelah scroll jadi pill putih solid melayang (`.top.float.on`, toggle oleh script inline di `partials/navigasi`). Halaman dalam: sticky polos tanpa bg. `position:sticky` via `.top` di semua halaman. Di beranda `.top` berdiri sendiri DI LUAR `.hero` (hero `overflow:hidden` mematikan sticky).
+- Halaman dalam flat tanpa kotak: tentang (visi/misi garis tipis), kontak (grid tipografis `.flatgrid`), kabinet dikelompokkan per divisi (`group_by="divisi"`, kartu foto tanpa border).
+- Teks muted di atas putih: `--mut`/`--soft` (derive navy, kontras aman). Kicker pakai `--lime2` (emas muda kurang kontras di putih).
 - Font display & body: Plus Jakarta Sans Variable saja. Fraunces pensiun dari display.
-- `prefers-color-scheme` override dihapus — situs memang gelap by design.
 - Header (`.top` + `partial:navigasi`) dan footer dipakai lintas layout — satu sumber.
 - Foto: Unsplash (lisensi bebas), disimpan di disk `assets` (`public/assets/img/`); hero via `foto_hero`, cover artikel via field `cover`.
 
-Token v1 (di atas) dan v2 (landing lime terang) sudah TIDAK dipakai — histori saja.
+Token v1 (tabel paling atas), v2 (landing lime terang), dan v3 (full gelap) sudah TIDAK dipakai — histori saja.
+
+## Control Panel (CP) — senada brand
+
+- Warna CP via `resources/preferences.yaml` → `theme.colors` (key = `Color::defaults()` di vendor `src/CP/Color.php`; bisa dioverride per-user di CP → Preferences). Primary & header navy `#003049`, accent oranye `#F77F00`, progress emas `#FCBF49`; mode gelap derive navy.
+- Nama CMS: `custom_cms_name: Ankasena` di `config/statamic/cp.php`.
