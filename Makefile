@@ -1,36 +1,22 @@
-# Ankasena — helper dev
-# make          : jalan Vite + web server bareng (Ctrl-C menghentikan keduanya)
-# make open     : buka port 7943 + 5173 di firewall (akses dari LAN, butuh sudo)
-# make close    : tutup lagi portnya
-# make status   : status rule firewall
-# make clean    : bersihkan cache Laravel + Statamic
+.PHONY: serve migrate fresh build dev clear test
 
-PHP  := /usr/bin/php8.4
-HOST := 0.0.0.0
-PORT := 7943
-# IP LAN utama (interface rute default) — dipakai Vite supaya asset bisa diakses dari perangkat lain
-LAN_IP := $(shell ip route get 1.1.1.1 2>/dev/null | grep -oP 'dev \K\S+' | head -1 | xargs -r ip -4 -o addr show 2>/dev/null | grep -oP 'inet \K[\d.]+' | head -1)
+serve:   ## Jalankan situs (php built-in server, port 7943)
+	php artisan serve --host=0.0.0.0 --port=7943
 
-.DEFAULT_GOAL := run
-.PHONY: run open close status clean
+migrate: ## Migrate + seed
+	php artisan migrate --seed
 
-run:
-	trap 'kill 0' INT TERM EXIT; \
-	$(PHP) artisan serve --host=$(HOST) --port=$(PORT) & \
-	VITE_HOST="$(LAN_IP)" npm run dev
+fresh:   ## Reset total DB + seed ulang (HAPUS semua data)
+	php artisan migrate:fresh --seed
 
-open:
-	sudo bash bin/firewall.sh open
-	sudo PORT=5173 bash bin/firewall.sh open
+build:   ## Build aset front (Vite) — hanya kalau ubah CSS/JS
+	npm run build
 
-close:
-	sudo bash bin/firewall.sh close
-	sudo PORT=5173 bash bin/firewall.sh close
+dev:     ## Aset front live-reload (server harus jalan terpisah)
+	npm run dev
 
-status:
-	sudo bash bin/firewall.sh status
+clear:   ## Bersihkan semua cache
+	php artisan optimize:clear
 
-clean:
-	$(PHP) artisan optimize:clear
-	$(PHP) artisan cache:clear
-	$(PHP) artisan statamic:stache:clear
+test:    ## PHPUnit
+	php artisan test

@@ -1,19 +1,14 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "statamic/statamic",
+    "name": "ankasena/ankasena",
     "type": "project",
-    "description": "Statamic",
-    "keywords": [
-        "statamic",
-        "cms",
-        "flat file",
-        "laravel"
-    ],
+    "description": "Situs OSIS MPK Ankasena",
     "require": {
         "php": "^8.3",
+        "filament/filament": "^5.11",
         "laravel/framework": "^13.17",
-        "laravel/tinker": "^3.0",
-        "statamic/cms": "^6.0"
+        "laravel/socialite": "^5.31",
+        "laravel/tinker": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -55,13 +50,9 @@
             "@php artisan config:clear --ansi @no_additional_args",
             "@php artisan test"
         ],
-        "pre-update-cmd": [
-            "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
-        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan statamic:install --ansi"
+            "@php artisan package:discover --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -69,12 +60,6 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\""
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "pre-package-uninstall": [
-            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ]
     },
     "extra": {
