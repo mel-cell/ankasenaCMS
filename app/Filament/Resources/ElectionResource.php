@@ -6,6 +6,7 @@ use BackedEnum;
 use UnitEnum;
 
 use App\Filament\Resources\ElectionResource\Pages;
+use App\Filament\Resources\ElectionResource\RelationManagers;
 use App\Models\Election;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Actions;
@@ -66,6 +67,13 @@ class ElectionResource extends Resource
             ])
             ->actions([Actions\EditAction::make()])
             ->bulkActions([Actions\DeleteBulkAction::make()]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\SuaraMasukRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

@@ -21,6 +21,11 @@ class Election extends Model
         return $this->hasMany(Candidate::class);
     }
 
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'pemilu_id');
+    }
+
     public function scopePublished($query)
     {
         return $query->where('published', true);
