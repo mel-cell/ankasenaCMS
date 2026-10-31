@@ -19,7 +19,7 @@
 
 @foreach ($events as $event)
 <section class="w" style="margin-top:clamp(40px,7vw,72px)">
-    <p class="kicker">{{ $event['tipe_label'] }}@if ($event['status_live']) · berlangsung@endif</p>
+    <p class="kicker">{{ $event['tipe_label'] }}@if ($event['status_live']) · berlangsung @endif</p>
     <h2>{{ $event['title'] }}</h2>
     <p class="lead">Total suara: {{ $event['total'] }}</p>
 

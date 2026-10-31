@@ -16,6 +16,8 @@
 
     @if ($favicon = \App\Support\Situs::img(\App\Support\Situs::get('favicon')))
         <link rel="icon" href="{{ $favicon }}">
+    @else
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     @endif
 
     @vite(['resources/js/site.js', 'resources/css/site.css', 'resources/css/landing.css'])

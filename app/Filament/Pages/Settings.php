@@ -2,26 +2,34 @@
 
 namespace App\Filament\Pages;
 
+use BackedEnum;
+use UnitEnum;
+
 use App\Models\Setting;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Pages\Page;
 use Filament\Notifications\Notification;
 
 class Settings extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-cog-6-tooth';
 
-    protected static ?string $navigationGroup = 'Sistem';
+    protected static string | UnitEnum | null $navigationGroup = 'Pengaturan';
 
     protected static ?string $navigationLabel = 'Pengaturan Situs';
 
-    protected static string $view = 'filament.pages.settings';
+    // Hanya superadmin; osis/mpk mengatur pemilu & twibon di halaman khususnya.
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->isSuper() ?? false;
+    }
+
+    protected string $view = 'filament.pages.settings';
 
     public ?array $data = [];
 
@@ -30,10 +38,9 @@ class Settings extends Page
         $this->form->fill(Setting::group('situs'));
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema->components([
                 Section::make('Identitas')->columns(2)->schema([
                     TextInput::make('nama_organisasi')->required(),
                     TextInput::make('sekolah'),
@@ -68,12 +75,6 @@ class Settings extends Page
                     TextInput::make('tiktok'),
                     TextInput::make('youtube'),
                     Textarea::make('alamat')->columnSpanFull(),
-                ]),
-
-                Section::make('Pemilu & twibon')->columns(2)->schema([
-                    Toggle::make('voting_open')->label('Voting dibuka')->helperText('Master switch halaman /vote.'),
-                    Toggle::make('twibon_aktif')->label('Twibon aktif'),
-                    Textarea::make('pesan_twibon')->helperText('Tampil saat twibon belum aktif.')->columnSpanFull(),
                 ]),
 
                 Section::make('Warna & CTA')->columns(2)->schema([

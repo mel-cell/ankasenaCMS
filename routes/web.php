@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AnalitikController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\VoteController;
@@ -21,10 +21,13 @@ Route::get('/vote', [VoteController::class, 'index'])->name('vote.index');
 Route::post('/vote', [VoteController::class, 'store'])->name('vote.store');
 Route::get('/vote/hasil', [VoteController::class, 'hasil'])->name('vote.hasil');
 
+// ---- Twibon ----
+Route::get('/twibon', [SiteController::class, 'twibon'])->name('twibon');
+
 // ---- Login Google untuk pemilih ----
+Route::get('/login', [AuthController::class, 'show'])->name('login');
+Route::post('/login', [AuthController::class, 'store'])->name('login.attempt');
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
 Route::post('/logout', [GoogleAuthController::class, 'logout'])->name('logout');
 
-// ---- Analitik penuh superadmin (di-embed iframe di dashboard Filament) ----
-Route::get('/analitik-cp', [AnalitikController::class, 'cp'])->name('analitik.embed');

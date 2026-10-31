@@ -152,3 +152,17 @@
   }
   .prose-article img { border-radius: var(--radius); }
 }
+
+/* Reveal on scroll (JS di site.js menandai section & .card) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}

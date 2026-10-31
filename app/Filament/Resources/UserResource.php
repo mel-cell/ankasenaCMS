@@ -2,12 +2,16 @@
 
 namespace App\Filament\Resources;
 
+use BackedEnum;
+use UnitEnum;
+
 use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Actions;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -16,9 +20,9 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-identification';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-identification';
 
-    protected static ?string $navigationGroup = 'Sistem';
+    protected static string | UnitEnum | null $navigationGroup = 'Pengaturan';
 
     protected static ?string $navigationLabel = 'Pengguna';
 
@@ -32,9 +36,9 @@ class UserResource extends Resource
         return auth()->user()?->isSuper() ?? false;
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             Section::make('Pengguna')->columns(2)->schema([
                 TextInput::make('name')->label('Nama'),
                 TextInput::make('email')->email()->required()->unique(ignoreRecord: true),
@@ -67,8 +71,8 @@ class UserResource extends Resource
                     }),
             ])
             ->filters([Tables\Filters\SelectFilter::make('role')->options(array_combine(User::ROLES, User::ROLES))])
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
+            ->actions([Actions\EditAction::make()])
+            ->bulkActions([Actions\DeleteBulkAction::make()]);
     }
 
     public static function getPages(): array

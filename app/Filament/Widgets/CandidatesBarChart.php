@@ -9,11 +9,11 @@ use Filament\Widgets\ChartWidget as BaseWidget;
 
 class CandidatesBarChart extends BaseWidget
 {
-    protected static ?string $heading = 'Suara per kandidat — pemilihan terbaru';
+    protected ?string $heading = 'Suara per kandidat — pemilihan terbaru';
 
     protected static ?int $sort = 3;
 
-    protected static ?string $maxHeight = '260px';
+    protected ?string $maxHeight = '260px';
 
     protected function getType(): string
     {

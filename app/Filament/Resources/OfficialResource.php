@@ -2,15 +2,19 @@
 
 namespace App\Filament\Resources;
 
+use BackedEnum;
+use UnitEnum;
+
 use App\Filament\Resources\OfficialResource\Pages;
 use App\Models\Official;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Section;
+use Filament\Actions;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -19,9 +23,9 @@ class OfficialResource extends Resource
 {
     protected static ?string $model = Official::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationGroup = 'Konten';
+    protected static string | UnitEnum | null $navigationGroup = 'Organisasi';
 
     protected static ?string $navigationLabel = 'Kabinet';
 
@@ -29,9 +33,9 @@ class OfficialResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'nama';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             Section::make('Pengurus')->columns(2)->schema([
                 TextInput::make('nama')->required(),
                 Select::make('jabatan')->options([
@@ -70,8 +74,8 @@ class OfficialResource extends Resource
                 Tables\Filters\SelectFilter::make('jabatan'),
                 Tables\Filters\SelectFilter::make('divisi'),
             ])
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
+            ->actions([Actions\EditAction::make()])
+            ->bulkActions([Actions\DeleteBulkAction::make()]);
     }
 
     public static function getPages(): array

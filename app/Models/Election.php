@@ -21,6 +21,11 @@ class Election extends Model
         return $this->hasMany(Candidate::class);
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+
     public function status(): string
     {
         $now = Carbon::now();

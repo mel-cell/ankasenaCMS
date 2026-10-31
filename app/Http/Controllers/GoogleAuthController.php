@@ -35,7 +35,7 @@ class GoogleAuthController extends Controller
 
         auth()->login($user, remember: true);
 
-        return redirect(session('url.intended', '/vote'));
+        return redirect(session('url.intended', $user->isAdmin() ? '/ankasena/panel' : '/vote'));
     }
 
     public function logout()

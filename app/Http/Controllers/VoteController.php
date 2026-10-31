@@ -12,6 +12,8 @@ class VoteController extends Controller
 {
     public function index()
     {
+        abort_unless(\App\Support\Situs::get('tampilkan_pemilu', true), 404);
+
         $user = auth()->user();
         $votingOpen = (bool) Setting::group('situs')['voting_open'] ?? false;
 
@@ -48,6 +50,8 @@ class VoteController extends Controller
 
     public function store()
     {
+        abort_unless(\App\Support\Situs::get('tampilkan_pemilu', true), 404);
+
         $user = auth()->user();
         abort_unless($user, 403);
 
@@ -102,6 +106,8 @@ class VoteController extends Controller
 
     public function hasil()
     {
+        abort_unless(\App\Support\Situs::get('tampilkan_pemilu', true), 404);
+
         $events = Election::published()->orderByDesc('selesai')->get()->map(function ($e) {
             $votes = Vote::where('pemilu_id', (string) $e->id)->get();
             $total = $votes->count();

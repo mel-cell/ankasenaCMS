@@ -2,16 +2,20 @@
 
 namespace App\Filament\Resources;
 
+use BackedEnum;
+use UnitEnum;
+
 use App\Filament\Resources\DivisionResource\Pages;
 use App\Models\Division;
 use Filament\Forms\Components\FileUpload;
+use Filament\Actions;
 use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,9 +24,9 @@ class DivisionResource extends Resource
 {
     protected static ?string $model = Division::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-squares-2x2';
 
-    protected static ?string $navigationGroup = 'Konten';
+    protected static string | UnitEnum | null $navigationGroup = 'Organisasi';
 
     protected static ?string $navigationLabel = 'Sekbid & Divisi';
 
@@ -30,9 +34,9 @@ class DivisionResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             Section::make('Sekbid / Divisi')->columns(2)->schema([
                 TextInput::make('title')->label('Nama')->required(),
                 Select::make('jenis')->options(['Sekbid' => 'Sekbid (OSIS)', 'Divisi' => 'Divisi (MPK)'])->default('Sekbid')->required(),
@@ -56,8 +60,8 @@ class DivisionResource extends Resource
                 Tables\Columns\ToggleColumn::make('published')->label('Tampil'),
             ])
             ->filters([Tables\Filters\SelectFilter::make('jenis')])
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
+            ->actions([Actions\EditAction::make()])
+            ->bulkActions([Actions\DeleteBulkAction::make()]);
     }
 
     public static function getPages(): array

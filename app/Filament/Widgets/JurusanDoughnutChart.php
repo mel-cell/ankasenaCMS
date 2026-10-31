@@ -9,11 +9,11 @@ use Filament\Widgets\ChartWidget as BaseWidget;
 
 class JurusanDoughnutChart extends BaseWidget
 {
-    protected static ?string $heading = 'Persebaran suara per jurusan — pemilihan terbaru';
+    protected ?string $heading = 'Persebaran suara per jurusan — pemilihan terbaru';
 
     protected static ?int $sort = 4;
 
-    protected static ?string $maxHeight = '260px';
+    protected ?string $maxHeight = '260px';
 
     protected function getType(): string
     {

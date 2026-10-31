@@ -41,7 +41,7 @@ document.querySelectorAll('.dd-lang [data-lang]').forEach(function(b){
 var m=document.getElementById('tg-mode');
 if(m)m.addEventListener('click',function(){
     var d=document.documentElement,n=d.dataset.mode==='dark'?'light':'dark';
-    d.dataset.mode=n;localStorage.setItem('mode',n);
+    d.dataset.mode=n;localStorage.setItem('mode',n);localStorage.setItem('filament:theme:mode',n);
     document.cookie='mode='+n+';path=/;max-age=31536000;samesite=lax';
 });
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){

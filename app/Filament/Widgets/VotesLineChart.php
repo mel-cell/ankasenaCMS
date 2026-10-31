@@ -8,11 +8,11 @@ use Filament\Widgets\ChartWidget as BaseWidget;
 
 class VotesLineChart extends BaseWidget
 {
-    protected static ?string $heading = 'Suara masuk per hari (14 hari terakhir)';
+    protected ?string $heading = 'Suara masuk per hari (14 hari terakhir)';
 
     protected static ?int $sort = 2;
 
-    protected static ?string $maxHeight = '260px';
+    protected ?string $maxHeight = '260px';
 
     protected function getType(): string
     {

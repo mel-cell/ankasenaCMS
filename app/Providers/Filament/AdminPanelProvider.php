@@ -23,11 +23,21 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('ankasena/panel')
             ->login()
+            ->pages([\Filament\Pages\Dashboard::class])
+            ->discoverResources(in: base_path('app/Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->discoverPages(in: base_path('app/Filament/Pages'), for: 'App\\Filament\\Pages')
+            // Dasbor global: hanya widget umum. Chart pemilu hidup di Ringkasan Pemilu.
+            ->widgets([\App\Filament\Widgets\StatsOverview::class])
             ->colors(['primary' => '#F77F00'])
+            ->defaultThemeMode(\Filament\Enums\ThemeMode::Light)
+            ->favicon(asset('favicon.svg'))
+            ->font('Plus Jakarta Sans Variable', asset('fonts/pjk.css'), \Filament\FontProviders\LocalFontProvider::class)
+            ->maxContentWidth('7xl')
             ->brandName('Ankasena')
             ->brandLogo(fn () => view('brand-mark'))
             ->brandLogoHeight('36px')
-            ->navigationGroups(['Konten', 'Pemilu', 'Sistem'])
+            ->navigationGroups(['Konten', 'Organisasi', 'Pemilu', 'Twibon', 'Pengaturan'])
+            ->collapsibleNavigationGroups()
             ->sidebarCollapsibleOnDesktop()
             ->renderHook(
                 'panels::styles.end',

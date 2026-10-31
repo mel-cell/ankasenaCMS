@@ -2,16 +2,20 @@
 
 namespace App\Filament\Resources;
 
+use BackedEnum;
+use UnitEnum;
+
 use App\Filament\Resources\CandidateResource\Pages;
 use App\Models\Candidate;
 use Filament\Forms\Components\FileUpload;
+use Filament\Actions;
 use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,9 +24,9 @@ class CandidateResource extends Resource
 {
     protected static ?string $model = Candidate::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-user-circle';
 
-    protected static ?string $navigationGroup = 'Pemilu';
+    protected static string | UnitEnum | null $navigationGroup = 'Pemilu';
 
     protected static ?string $navigationLabel = 'Kandidat';
 
@@ -30,9 +34,9 @@ class CandidateResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             Section::make('Kandidat')->columns(2)->schema([
                 Select::make('election_id')->label('Pemilihan')->relationship('election', 'title')->required()->columnSpanFull(),
                 TextInput::make('title')->label('Nama')->required(),
@@ -62,8 +66,8 @@ class CandidateResource extends Resource
                 Tables\Columns\ToggleColumn::make('published')->label('Tampil'),
             ])
             ->filters([Tables\Filters\SelectFilter::make('election')->relationship('election', 'title')->label('Pemilihan')])
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
+            ->actions([Actions\EditAction::make()])
+            ->bulkActions([Actions\DeleteBulkAction::make()]);
     }
 
     public static function getPages(): array

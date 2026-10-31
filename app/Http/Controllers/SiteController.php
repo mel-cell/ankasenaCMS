@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Division;
 use App\Models\Official;
+use App\Models\Setting;
 use App\Models\Suggestion;
 use App\Support\Situs;
 
@@ -14,6 +15,20 @@ class SiteController extends Controller
     {
         return view('pages.home', [
             'articles' => Article::published()->orderByDesc('date')->limit(3)->get(),
+        ]);
+    }
+
+    public function twibon()
+    {
+        $situs = Setting::group('situs');
+
+        abort_unless($situs['tampilkan_twibon'] ?? true, 404);
+
+        return view('pages.twibon', [
+            'aktif' => (bool) ($situs['twibon_aktif'] ?? false),
+            'pesan' => $situs['pesan_twibon'] ?? 'Twibon sedang disiapkan. Nanti kembali lagi ya!',
+            'nama_organisasi' => $situs['nama_organisasi'] ?? 'Ankasena',
+            'periode' => $situs['periode'] ?? '',
         ]);
     }
 

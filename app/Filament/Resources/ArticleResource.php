@@ -2,16 +2,20 @@
 
 namespace App\Filament\Resources;
 
+use BackedEnum;
+use UnitEnum;
+
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Models\Article;
 use Filament\Forms\Components\DatePicker;
+use Filament\Actions;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,9 +24,9 @@ class ArticleResource extends Resource
 {
     protected static ?string $model = Article::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-newspaper';
 
-    protected static ?string $navigationGroup = 'Konten';
+    protected static string | UnitEnum | null $navigationGroup = 'Konten';
 
     protected static ?string $navigationLabel = 'Berita';
 
@@ -30,9 +34,9 @@ class ArticleResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             Section::make('Berita')->columns(2)->schema([
                 TextInput::make('title')->label('Judul')->required()->maxLength(150)->columnSpanFull(),
                 Textarea::make('excerpt')->label('Ringkasan')->required()->maxLength(200)->helperText('Tampil di kartu blog dan meta description.')->columnSpanFull(),
@@ -63,8 +67,8 @@ class ArticleResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('kategori')->options(fn () => Article::distinct()->pluck('kategori', 'kategori')->filter()),
             ])
-            ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
+            ->actions([Actions\EditAction::make()])
+            ->bulkActions([Actions\DeleteBulkAction::make()]);
     }
 
     public static function getPages(): array

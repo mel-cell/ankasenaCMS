@@ -21,8 +21,13 @@ class Candidate extends Model
         return $this->belongsTo(Election::class);
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+
     public function jurusan()
     {
-        return $this->belongsTo(Major::class);
+        return $this->belongsTo(Major::class, 'jurusan_id');
     }
 }
